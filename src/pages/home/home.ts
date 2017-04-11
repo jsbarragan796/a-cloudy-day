@@ -62,17 +62,18 @@ export class HomePage {
           return;
         }
         var icon = {
-          url: place.icon,
-          size: new google.maps.Size(71, 71),
+          url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+          size: new google.maps.Size(100, 100),
           origin: new google.maps.Point(0, 0),
           anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25)
+          scaledSize: new google.maps.Size(50, 50)
         };
 
-        // Create a marker for each place.
+        // Create a marker for each place.z
         markers.push(new google.maps.Marker({
           map: map,
           icon: icon,
+          animation: google.maps.Animation.DROP,
           title: place.name,
           position: place.geometry.location
         }));
