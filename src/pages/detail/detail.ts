@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 /**
 * Generated class for the Detail page.
@@ -18,9 +18,5 @@ export class DetailPage {
     this.item =navParams.get('item');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Detail');
-
-  }
-
+  
 }
