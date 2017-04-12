@@ -29,15 +29,17 @@ export class HomePage {
   }
 
   locateUser(){
-
     this.presentLoading();
     this.geolocation.getCurrentPosition().then((pos) => {
       this.posicion=pos;
       this.initMap();
     });
-
-  
-
+  }
+  locateUserBoton(){
+    this.geolocation.getCurrentPosition().then((pos) => {
+      this.posicion=pos;
+      this.initMap();
+    });
   }
   ionViewDidLoad(){
     this.locateUser();
@@ -138,30 +140,30 @@ export class HomePage {
 
     for (var i = 0; i < parqueaderos.length; i++) {
       (function(parqueadero){
-      var lg = new google.maps.LatLng(Number(parqueadero[1]),Number(parqueadero[2]));
-      var contenidoString = '<div>'+
-      '<p>'+parqueadero[0]+'</p>'+
-      '<p>'+parqueadero[3]+' pesos/min</p>'+
-      '<p>'+parqueadero[4]+' metros a destino</p>'+
-      '<p>'+parqueadero[5]+' cupos disponibles</p>'+
-      '<button ion-button>'+
-      'Reservar'+
-      '</button>'+
-      '</div';
+        var lg = new google.maps.LatLng(Number(parqueadero[1]),Number(parqueadero[2]));
+        var contenidoString = '<div>'+
+        '<p>'+parqueadero[0]+'</p>'+
+        '<p>'+parqueadero[3]+' pesos/min</p>'+
+        '<p>'+parqueadero[4]+' metros a destino</p>'+
+        '<p>'+parqueadero[5]+' cupos disponibles</p>'+
+        '<button ion-button>'+
+        'Reservar'+
+        '</button>'+
+        '</div';
 
-      var infowindow = new google.maps.InfoWindow({
-         content: contenidoString,
+        var infowindow = new google.maps.InfoWindow({
+          content: contenidoString,
           maxWidth: 70
-      });
-      var marker = new google.maps.Marker({
-        position: lg,
-        map: map,
-        icon: image,
-        title: String(parqueadero[1])
-      });
-      marker.addListener('click', function() {
-        infowindow.open(map, marker);
-      });
+        });
+        var marker = new google.maps.Marker({
+          position: lg,
+          map: map,
+          icon: image,
+          title: String(parqueadero[1])
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
       })(parqueaderos[i]);
     }
 
