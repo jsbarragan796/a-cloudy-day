@@ -111,5 +111,65 @@ export class HomePage {
     });
 
     this.map =map;
+
+
+    var parqueaderosCoor = [
+      ['La bendicion', 4.600589044444201, -74.06688451766968, 2637],
+      ['La Alegria', 4.601228026690072, -74.067970,  2621],
+      ['Ricos y famosos', 4.60405,-74.0657, 2632],
+      ['Globalizacion', 4.6036, -74.066, 2627],
+      ['La loma', 4.604893, -74.065, 2638]
+    ];
+    var parqueaderos = [
+      ['La bendicion', 85 , 300, 1],
+      ['La Alegria', 45 , 300, 90],
+      ['Ricos y famosos' , 75 , 300, 33],
+      ['Globalizacion', 55 , 300, 11],
+      ['La loma', 95 , 300, 10]
+    ];
+
+    var image = {
+      url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+      // This marker is 20 pixels wide by 32 pixels high.
+      size: new google.maps.Size(50, 50),
+      // The origin for this image is (0, 0).
+      origin: new google.maps.Point(0, 0),
+      // The anchor for this image is the base of the flagpole at (0, 32).
+      anchor: new google.maps.Point(17, 32),
+    };
+
+    var infowindow = new google.maps.InfoWindow();
+
+    for (var i = 0; i < parqueaderosCoor.length; i++) {
+
+      var marker =undefined;
+      var contenidoString=undefined;
+      var parqueadero = parqueaderosCoor[i];
+      var parqueaderoDatos = parqueaderos[i];
+      var lg = new google.maps.LatLng(Number(parqueadero[1]),Number(parqueadero[2]));
+      contenidoString = '<div>'+
+      '<h4>'+parqueaderoDatos[0]+'</h4>'+
+      '<p>'+parqueaderoDatos[1]+' pesos/min</p>'+
+      '<p>'+parqueaderoDatos[2]+' metros a destino</p>'+
+      '<p>'+parqueaderoDatos[3]+' cupos disponibles</p>'+
+      '<button ion-button>'+
+      'Reservar'+
+      '</button>'+
+      '</div';
+
+
+      marker = new google.maps.Marker({
+        position: lg,
+        map: map,
+        icon: image,
+        title: String(parqueaderoDatos[1])
+      });
+      marker.addListener('click', function() {
+        infowindow.close(); // Close previously opened infowindow
+        infowindow.setContent(contenidoString);
+        infowindow.open(map, marker);
+      });
+    }
+
   }
 }
