@@ -1,5 +1,7 @@
 import { Component,ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Platform } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 
 @Component({
@@ -8,20 +10,39 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-
   @ViewChild('map') mapElement;
   map:any;
-  constructor(public navCtrl: NavController) {
+  lati:any;
+  longi:any;
+  posicion:any=undefined;
+
+  constructor(public loadingCtrl: LoadingController,private platform: Platform, private geolocation: Geolocation) {
 
   }
 
+  presentLoading() {
+    let loader = this.loadingCtrl.create({
+      content: "Cargando... ",
+      duration: 3000
+    });
+    loader.present();
+  }
+
+  locateUser(){
+    this.presentLoading();
+    this.geolocation.getCurrentPosition().then((pos) => {
+      this.posicion=pos;
+      this.initMap();
+    });
+
+  }
   ionViewDidLoad(){
-    this.initMap();
+    this.locateUser();
   }
 
   initMap(){
 
-    let latLng = new google.maps.LatLng(-34.92,138.60);
+    let latLng = new google.maps.LatLng(this.posicion.coords.latitude,this.posicion.coords.longitude);
     let mapOptions ={
       center:latLng,
       zoom:15,
