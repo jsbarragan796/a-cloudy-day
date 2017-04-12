@@ -29,11 +29,14 @@ export class HomePage {
   }
 
   locateUser(){
+
     this.presentLoading();
     this.geolocation.getCurrentPosition().then((pos) => {
       this.posicion=pos;
       this.initMap();
     });
+
+  
 
   }
   ionViewDidLoad(){
@@ -113,19 +116,12 @@ export class HomePage {
     this.map =map;
 
 
-    var parqueaderosCoor = [
-      ['La bendicion', 4.600589044444201, -74.06688451766968, 2637],
-      ['La Alegria', 4.601228026690072, -74.067970,  2621],
-      ['Ricos y famosos', 4.60405,-74.0657, 2632],
-      ['Globalizacion', 4.6036, -74.066, 2627],
-      ['La loma', 4.604893, -74.065, 2638]
-    ];
     var parqueaderos = [
-      ['La bendicion', 85 , 300, 1],
-      ['La Alegria', 45 , 300, 90],
-      ['Ricos y famosos' , 75 , 300, 33],
-      ['Globalizacion', 55 , 300, 11],
-      ['La loma', 95 , 300, 10]
+      ['La bendicion',4.600589044444201, -74.06688451766968, 85 , 300, 1],
+      ['La Alegria',4.601228026690072, -74.067970, 45 , 300, 90],
+      ['Ricos y famosos' ,4.60405,-74.0657, 75 , 300, 33],
+      ['Globalizacion', 4.6036, -74.066,55 , 300, 11],
+      ['La loma',4.604893, -74.065, 95 , 300, 10]
     ];
 
     var image = {
@@ -138,37 +134,35 @@ export class HomePage {
       anchor: new google.maps.Point(17, 32),
     };
 
-    var infowindow = new google.maps.InfoWindow();
 
-    for (var i = 0; i < parqueaderosCoor.length; i++) {
 
-      var marker =undefined;
-      var contenidoString=undefined;
-      var parqueadero = parqueaderosCoor[i];
-      var parqueaderoDatos = parqueaderos[i];
+    for (var i = 0; i < parqueaderos.length; i++) {
+      (function(parqueadero){
       var lg = new google.maps.LatLng(Number(parqueadero[1]),Number(parqueadero[2]));
-      contenidoString = '<div>'+
-      '<h4>'+parqueaderoDatos[0]+'</h4>'+
-      '<p>'+parqueaderoDatos[1]+' pesos/min</p>'+
-      '<p>'+parqueaderoDatos[2]+' metros a destino</p>'+
-      '<p>'+parqueaderoDatos[3]+' cupos disponibles</p>'+
+      var contenidoString = '<div>'+
+      '<p>'+parqueadero[0]+'</p>'+
+      '<p>'+parqueadero[3]+' pesos/min</p>'+
+      '<p>'+parqueadero[4]+' metros a destino</p>'+
+      '<p>'+parqueadero[5]+' cupos disponibles</p>'+
       '<button ion-button>'+
       'Reservar'+
       '</button>'+
       '</div';
 
-
-      marker = new google.maps.Marker({
+      var infowindow = new google.maps.InfoWindow({
+         content: contenidoString,
+          maxWidth: 70
+      });
+      var marker = new google.maps.Marker({
         position: lg,
         map: map,
         icon: image,
-        title: String(parqueaderoDatos[1])
+        title: String(parqueadero[1])
       });
       marker.addListener('click', function() {
-        infowindow.close(); // Close previously opened infowindow
-        infowindow.setContent(contenidoString);
         infowindow.open(map, marker);
       });
+      })(parqueaderos[i]);
     }
 
   }
