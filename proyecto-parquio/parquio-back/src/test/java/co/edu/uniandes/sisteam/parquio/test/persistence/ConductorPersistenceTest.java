@@ -1,3 +1,5 @@
+package co.edu.uniandes.sisteam.parquio.test.persistence;
+
 //package co.edu.uniandes.sisteam.corazon.test.persistence;
 //
 //import co.edu.uniandes.sisteam.parquio.entities.PacienteEntity;

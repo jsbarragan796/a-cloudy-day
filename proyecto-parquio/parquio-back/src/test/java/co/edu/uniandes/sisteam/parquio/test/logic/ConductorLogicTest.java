@@ -1,3 +1,5 @@
+package co.edu.uniandes.sisteam.parquio.test.logic;
+
 //package co.edu.uniandes.sisteam.corazon.test.logic;
 //
 //import co.edu.uniandes.sisteam.corazon.api.IPacienteLogic;
