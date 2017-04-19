@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <persistence-unit name="SisteamCorazonPU" transaction-type="JTA">
+  <persistence-unit name="SisteamParquioPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>java:app/jdbc/corazon</jta-data-source>
-    <class>co.edu.uniandes.sisteam.corazon.entities.BaseEntity</class>
-    <class>co.edu.uniandes.sisteam.corazon.entities.PacienteEntity</class>
-    <class>co.edu.uniandes.sisteam.corazon.entities.MedicionEntity</class>
-    <class>co.edu.uniandes.sisteam.corazon.entities.EmergenciaEntity</class>
-    <class>co.edu.uniandes.sisteam.corazon.entities.ConsejoEntity</class>
-    <class>co.edu.uniandes.sisteam.corazon.entities.DiagnosticoEntity</class>
-    <class>co.edu.uniandes.sisteam.corazon.entities.ExamenEntity</class>
-    <class>co.edu.uniandes.sisteam.corazon.entities.HistoriaClinicaEntity</class>
-    <class>co.edu.uniandes.sisteam.corazon.entities.MarcapasosEntity</class>
-    <class>co.edu.uniandes.sisteam.corazon.entities.MedicoEntity</class>
-    <class>co.edu.uniandes.sisteam.corazon.entities.TratamientoEntity</class>
+    <jta-data-source>java:app/jdbc/parquio</jta-data-source>
+    <class>co.edu.uniandes.sisteam.parquio.entities.ConsejoEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.PacienteEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.ExamenEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.DiagnosticoEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.MedicoEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.EmergenciaEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.MedicionEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.BaseEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.HistoriaClinicaEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.MarcapasosEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.TratamientoEntity</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

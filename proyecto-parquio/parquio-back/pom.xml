@@ -4,7 +4,7 @@
     
     <parent>
         <groupId>co.edu.uniandes.SisTeam</groupId>
-        <artifactId>proyecto-corazon</artifactId>
+        <artifactId>proyecto-parquio</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>

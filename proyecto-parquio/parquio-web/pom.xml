@@ -7,7 +7,7 @@
     <packaging>war</packaging>
     <parent>
         <groupId>co.edu.uniandes.SisTeam</groupId>
-        <artifactId>proyecto-corazon</artifactId>
+        <artifactId>proyecto-parquio</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -20,36 +20,6 @@
     
     <dependencies>
         
-         <!-- Shiro -->
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-            <version>1.2.3</version>
-            <type>jar</type>
-        </dependency>
-        
-        <!--   Stormpath   -->
-        
-        <dependency>
-            <groupId>com.stormpath.shiro</groupId>
-            <artifactId>stormpath-shiro-core</artifactId>
-            <version>0.6.0</version>
-        </dependency>
-         
-        <dependency>
-            <groupId>com.stormpath.sdk</groupId>
-            <artifactId>stormpath-sdk-api</artifactId>
-            <version>1.0.RC2</version>
-            <!--            <scope>runtime</scope>-->
-        </dependency> 
-   
-        <dependency>
-            <groupId>com.stormpath.sdk</groupId>
-            <artifactId>stormpath-sdk-httpclient</artifactId>
-            <version>1.0.RC2</version>
-            <scope>runtime</scope>
-        </dependency> 
-       
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
@@ -76,12 +46,6 @@
             <version>2.23.2</version>
             <type>jar</type>
         </dependency>
-        <!--        <dependency>
-            <groupId>co.edu.uniandes.SisTeam</groupId>
-            <artifactId>restaurantes-back</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
-        </dependency>-->
         <dependency>
             <groupId>org.jboss.shrinkwrap.resolver</groupId>
             <artifactId>shrinkwrap-resolver-api-maven</artifactId>
@@ -105,14 +69,9 @@
         </dependency>
         <dependency>
             <groupId>co.edu.uniandes.SisTeam</groupId>
-            <artifactId>corazon-back</artifactId>
+            <artifactId>parquio-back</artifactId>
             <version>1.0-SNAPSHOT</version>
             <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>com.mycompany</groupId>
-            <artifactId>security</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
