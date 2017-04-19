@@ -1,0 +1,215 @@
+<!--<!DOCTYPE html>
+<html ng-app="mainApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+
+        <title>Restaurantes Sisteam</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+         plantilla     
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style-portfolio.css">
+        <link rel="stylesheet" href="css/picto-foundry-food.css" />
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link rel="icon" href="favicon-1.ico" type="image/x-icon">
+         aca termina   
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+        <script src="bower_components/restangular/dist/restangular.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>     
+        <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-ui-select/dist/select.js"></script>
+
+
+        <script src="src/modules/inicio/inicio.mod.js" type="text/javascript"></script>
+        <script src="src/modules/inicio/inicio.ctrl.js" type="text/javascript"></script>
+
+
+        <script src="src/modules/sucursales/sucursales.mod.js" type="text/javascript"></script>
+        <script src="src/modules/sucursales/sucursales.ctrl.js" type="text/javascript"></script>
+
+        <script src="src/modules/sucursales/sucursalreservas/reservasSucursalCtrl.js" type="text/javascript"></script>
+
+        <script src="src/modules/sucursales/sucursaldomicilios/domiciliosSucursalCtrl.js" type="text/javascript"></script>
+        <script src="src/modules/sucursales/sucursaldomicilios/domiciliosSucursalListCtrl.js" type="text/javascript"></script>
+        <script src="src/modules/sucursales/domiciliosPendientes/domiciliosPendientesListCtrl.js" type="text/javascript"></script>
+        <script src="src/modules/sucursales/domiciliosPendientes/domiciliosPendientesCtrl.js" type="text/javascript"></script>
+        <script src="src/modules/sucursales/domiciliosDeSucursal/domiciliosDeSucursalCtrl.js" type="text/javascript"></script>
+        <script src="src/utils/datePicker.ctrl.js" type="text/javascript"></script>       
+
+
+
+
+        <script src="src/modules/clientes/clientes.mod.js" type="text/javascript"></script>
+        <script src="src/modules/clientes/clientes.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/clientes/clientesreservas/reservas.ctrl.js" type="text/javascript"></script>
+
+        <script src="src/modules/mediosDePago/mdps.mod.js" type="text/javascript"></script>
+        <script src="src/modules/mediosDePago/mdps.ctrl.js" type="text/javascript"></script>
+
+        <script src="src/modules/platos/platos.mod.js" type="text/javascript"></script>
+        <script src="src/modules/platos/platos.ctrl.js" type="text/javascript"></script>
+
+        <script src="src/modules/domicilios/domicilios.mod.js" type="text/javascript"></script>
+        <script src="src/modules/domicilios/domicilios.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/domicilios/domicilioPlatos/domicilioPlatosCtrl.js" type="text/javascript"></script>
+        <script src="src/modules/domicilios/agregarPlatos/agregarPlatosCtrl.js" type="text/javascript"></script>
+
+         Mesas 
+        <script src="src/modules/mesas/mesas.mod.js" type="text/javascript"></script>
+        <script src="src/modules/mesas/mesas.ctrl.js" type="text/javascript"></script>
+
+         PlatosEsp 
+        <script src="src/modules/platosEsp/platosEsp.mod.js" type="text/javascript"></script>
+        <script src="src/modules/platosEsp/platosEsp.ctrl.js" type="text/javascript"></script>
+
+        <script src="src/app.js" type="text/javascript"></script> 
+
+
+    </head>
+    <body>
+
+         plantilla 
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="row">
+                     Brand and toggle get grouped for better mobile display 
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" >Restaurantes Sisteam</a>
+                    </div>
+
+                     Collect the nav links, forms, and other content for toggling 
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav main-nav  clear navbar-right ">                           
+                            <li><a class="color_animation" ui-sref="inicio"   >Quienes somos</a></li>                    
+                            <li><a class="color_animation" ui-sref="sucursalesList ">Sucursales</a></li>
+                            <li><a class="color_animation" ui-sref="clientesLogin">Clientes</a></li> 
+                            <li><a class="color_animation" ui-sref="platosList">Nuestos platos</a></li>
+                                              
+                        </ul>
+                    </div> /.navbar-collapse 
+                </div>
+            </div> /.container-fluid 
+        </nav>
+
+        <div ui-view="foto">
+
+        </div> 
+
+         aca termina 
+
+
+                <div class= "container-fluid col-md-12">   
+                    <h3>SisTeam - Restaurantes</h3>
+                    <ul class="nav nav-tabs">            
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Sucursales
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="sucursalCreate">Create</a></li>    
+                                 <li><a ui-sref="sucursalesList">List</a></li>       
+                            </ul>
+                        </li> 
+
+                         
+                        
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Clientes
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="clientesCreate">Create</a></li>    
+                                 <li><a ui-sref="clientesList">List</a></li>       
+                            </ul>
+                        </li>  
+
+                         <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Platos Estandares
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="platosCreate">Create</a></li>    
+                                 <li><a ui-sref="platosList">List</a></li>       
+                            </ul>
+                        </li> 
+
+                         <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Domicilios
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="domiciliosCreate">Create</a></li>    
+                                 <li><a ui-sref="domiciliosList">List</a></li>       
+                            </ul>
+                        </li>
+                        
+                    </ul>
+        <section id="mainView">          
+            <div ui-view="mainView">
+
+            </div>
+        </section>
+         ============ Social Section  ============= 
+
+        <section class="social_connect">
+            <div class="text-content container"> 
+                <div class="col-md-6">
+                    <span class="social_heading">Siguenos</span>
+                    <ul class="social_icons">
+                        <li><a class="icon-twitter color_animation" href="#" target="_blank"></a></li>
+                        <li><a class="icon-github color_animation" href="#" target="_blank"></a></li>
+                        <li><a class="icon-linkedin color_animation" href="#" target="_blank"></a></li>           
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <span class="social_heading">Llamanos</span>
+                    <span class="social_info"><a class="color_animation" href="tel:300-000-0000">(57) 300-000-0000</a></span>
+                </div>
+            </div>
+        </section>
+
+
+
+         ============ Footer Section plantilla ============= 
+        <footer class="sub_footer">
+            <div class="container">
+                <div class="col-md-4"><p class="sub-footer-text text-center">&copy; Restaurant 2014, Plantilla de:  <a href="https://themewagon.com/">ThemeWagon</a></p></div>
+                <div class="col-md-4"><p class="sub-footer-text text-center">Volver  <a href="#top">arriba</a></p>
+                </div>
+                <div class="col-md-4"><p class="sub-footer-text text-center">Adaptado por: <a href="#" target="_blank">Sisteam Uniandes</a></p></div>
+            </div>
+        </footer>
+
+
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="js/jquery-1.10.2.js"></script>     
+        <script type="text/javascript" src="js/jquery.mixitup.min.js" ></script>
+        <script type="text/javascript" src="js/main.js" ></script>
+
+         ============ aca termina ============= 
+
+
+
+    </body>
+
+</html>-->

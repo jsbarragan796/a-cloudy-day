@@ -1,0 +1,29 @@
+<section id ="sucursal" class="description_content">
+
+
+    <div class="col-md-8 col-md-offset-0">
+
+        <table class="table table-condensed" >
+            <thead>
+                <tr class="text text-center">
+                    <th>Nombre</th> 
+                    <th> Ubicación</th>   
+                    <th> Dirección</th> 
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-center" ng-repeat="record in records">
+                    <td id="{{$index}}-name">{{record.name}}</td>
+                    <td id="{{$index}}-ubicacion">{{record.ubicacion}}</td>
+                    <td id="{{$index}}-direccion">{{record.direccion}}</td>
+                    <td>                                  
+                        <button id="{{$index}}-edit-btn" class="btn form-btn" ui-sref="createReservaCliente({sucursalId:record.id})"><span class="glyphicon glyphicon-book"></span> Realizar reservación</button>                    
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</section>

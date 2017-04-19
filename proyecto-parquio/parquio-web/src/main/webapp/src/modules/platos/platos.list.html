@@ -1,0 +1,37 @@
+
+<section id ="plato" class="description_content">
+    <div  class="beer background_content">
+        <h1> Deliciosos platos</h1>
+    </div>
+    <div class="text-content container"> 
+        <div class="col-md-4">
+            <div class="img-section">
+                <img src="images/slider3.JPG" width="100%">
+            </div>
+
+        </div>
+
+        <div class="col-md-8 col-md-offset-0">
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="text text-justify" > 
+                        <th>Nombre </th>        
+                        <th>Precio</th>
+                        <th>Descripción</th>            
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text text-justify" ng-repeat="record in records">
+                        <td id="{{$index}}-nombre">{{record.nombre}}</td>
+                        <td id="{{$index}}-precio">{{record.precio}}</td>
+                        <td id="{{$index}}-descripcion">{{record.descripcion}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>

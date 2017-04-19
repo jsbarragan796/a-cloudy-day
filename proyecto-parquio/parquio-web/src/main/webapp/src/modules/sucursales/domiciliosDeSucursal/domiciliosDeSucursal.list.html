@@ -1,0 +1,25 @@
+<div>   
+    <table class="table table-striped" class="col-md-4">
+        <thead>
+            <tr>  
+                <th>Cliente</th>
+                <th>Distancia</th>
+                <th>LugarEntrega</th>
+                <th>Descuento</th>
+                <th>Entregado</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in domiciliosDeSucursal">
+                <td id="{{$index}}-name">{{record.cliente.username}}</td>
+                <td id="{{$index}}-name">{{record.distanciaAprovada}}</td>
+                <td id="{{$index}}-name">{{record.lugarEntrega}}</td>
+                <td id="{{$index}}-name">{{record.descuento}}</td>
+                <td id="{{$index}}-name">{{record.entregado}}</td>
+                <td id="{{$index}}-name">{{record.fecha}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

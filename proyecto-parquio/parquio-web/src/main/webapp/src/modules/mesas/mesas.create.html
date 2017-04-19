@@ -1,0 +1,33 @@
+<div class="col-md-12 well">
+    <form novalidate name="form" id="review-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+
+        <div ng-messages="form.$error">
+            <div ng-message="required">Fill the required fields!</div>
+        </div>
+
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+            <!-- Capacidad -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="capacidad" class="col-md-2 control-label">Capacidad</label>
+                <div class="col-md-10">
+                    <input id="capacidad" name="capacidad" class="form-control" type="text" ng-model="currentRecord.capacidad" ng-init="currentRecord.capacidad" required />
+                </div>
+            </div>
+            <!-- NumPiso -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="numPiso" class="col-md-2 control-label">Numero de Piso</label>
+                <div class="col-md-10">
+                    <input id="name" name="numPiso" class="form-control" type="text" ng-model="currentRecord.numPiso" ng-init="currentRecord.numPiso" required />
+                </div>
+            </div>
+          
+             </fieldset>
+            <div class="form-group col-md-12">
+                <button type="button" ui-sref='mesasList'>Cancel</button>
+                <button type="submit" >Save</button>   
+            </div>
+       
+    </form>
+</div>
+

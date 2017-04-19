@@ -1,0 +1,29 @@
+<div class="col-md-12">
+    <div class="container-fluid">
+        <div class="row">
+            <button class="btn btn-default" ui-sref="mdpsCreate({idCliente:idCliente})">Create new Medio De Pago</button></div>
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo</th>
+                        <th>Num</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="record in records">
+                        <td id="{{$index}}-name">{{record.id}}</td>
+                        <td id="{{$index}}-capacidad">{{record.tipo}}</td>
+                        <td id="{{$index}}-numPiso">{{record.num}}</td>
+                        <td>
+                            <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="mdpEdit({idmdp: record.id,idCliente:currentRecord.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                            <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record.id)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

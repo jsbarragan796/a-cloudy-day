@@ -1,0 +1,56 @@
+<section id ="cliente" class="description_content">
+
+    <div  class="beer background_content">
+        <h2>Bienvenido</h2>
+    </div>
+    <div class="text-content container"> 
+        <div class="col-md-4">
+            <div class="img-section">
+                <img src="images/limes.jpg" width="100%">
+            </div>
+
+        </div>
+
+        <div class="col-md-8 col-md-offset-0">
+            <div class="contact-form">
+                <form novalidate name="form" id="cliente-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+
+                    <div ng-messages="form.$error">
+                        <div ng-message="required">Diligenciar todos los datos</div>
+                    </div>
+
+                    <fieldset>
+                        <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+                        <!-- Name -->
+                        <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                            <label for="name" class="col-md-2 right-text">Nombre usuario</label>
+                            <div class="col-lg-6 col-md-6 col-xs-6">
+                                <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.username" ng-init="currentRecord.username" required />
+                            </div>
+                        </div>
+                        <!-- Ubicacion --> 
+                        <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                            <label for="ubicacion" class="col-md-2 right-text">Puntos</label>
+                            <div class="col-lg-6 col-md-6 col-xs-6">
+                                <input id="name" name="ubicacion" class="form-control" type="text" ng-model="currentRecord.puntos" ng-init="currentRecord.puntos" required />
+                            </div>
+                        </div>
+                        <!-- Direccion -->
+                        <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                            <label for="direccion" class="col-md-2 right-text">Dirección</label>
+                            <div class="col-lg-6 col-md-6 col-xs-6">
+                                <input id="name" name="direccion" class="form-control" type="text" ng-model="currentRecord.direccion" ng-init="currentRecord.direccion" required />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="col-md-12 social_info">
+                        <div class="col-md-2"></div> 
+                        <button type="submit" class="text-center btn form-btn3 " >Guardar cambios datos personales</button> 
+                        <button type="button" class="text-center btn form-btn2" ui-sref='clientesList'>Salir</button>
+                           
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

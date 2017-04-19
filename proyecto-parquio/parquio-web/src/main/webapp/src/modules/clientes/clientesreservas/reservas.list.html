@@ -1,0 +1,39 @@
+
+<section id ="sucursalReservas" class="description_content">
+<div class="text text-content container" >
+
+   
+        <table class="table table-condensed" >
+            <thead>
+                <tr  class="text text-center">                       
+                    <th>Sucursal nombre</th>
+                    <th>Sucursal dirección</th>
+                    <th>Sucursal ubicación</th>
+                    <th>Mesa identificador</th>
+                    <th>Numero de personas</th>
+                    <th>Piso</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text text-justify" ng-repeat="record in records">                
+                    <td id="{{$index}}-name1">{{record.mesa.sucursal.name}}</td>
+                    <td id="{{$index}}-name2">{{record.mesa.sucursal.direccion}}</td>
+                    <td id="{{$index}}-name3">{{record.mesa.sucursal.ubicacion}}</td>
+                    <td id="{{$index}}-name4">{{record.mesa.id}}</td>
+                    <td id="{{$index}}-name5">{{record.numPersonas}}</td>
+                    <td id="{{$index}}-name6">{{record.numPiso}}</td>
+                    <td id="{{$index}}-name7">{{record.fecha}}</td>
+                    <td id="{{$index}}-name8">{{record.name}}</td>
+                    <td>
+                        <button id="{{$index}}-edit-btn" class="btn  form-btn" ui-sref="editReservaCliente({idReserva:record.id,sucursalId:record.mesa.sucursal.id})"><span class="glyphicon glyphicon-edit"></span> Editar </button>
+                        <button id="{{$index}}-delete-btn" class="btn  form-btn2" ng-click="ctrl.deleteRecord(record.id)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</section>

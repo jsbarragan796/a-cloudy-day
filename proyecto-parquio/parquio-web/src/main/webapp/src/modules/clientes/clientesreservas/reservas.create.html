@@ -1,0 +1,59 @@
+<section id ="cliente" class="description_content">
+
+    <div class="container-fluid">
+        <h3 >Realizando reservación </h3>
+
+        <div class="text text-content container"> 
+
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+
+            <div class="contact-form">
+                <form novalidate name="form" id="reserva-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+
+                    <div ng-messages="form.$error">
+                        <div ng-message="required">Diligenciar todos los datos</div>
+                    </div>
+
+                    <fieldset>
+                        <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id" ng-init="currentRecord.id"/>
+                        <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+
+                            <label for="numPersonas" class="col-md-2 right-text">Número de personas</label>
+                            <div class="col-md-10">
+                                <input id="numPersonas" name="numPersonas" class="form-control" type="text" ng-model="currentRecord.numPersonas" ng-init="currentRecord.numPersonas" required />
+                            </div>
+
+                            <!-- Date -->
+                            <label for="fecha" class="col-md-2 right-text">Fecha </label>
+                            <div class="col-md-10">
+                                <date-picker id="fecha" name="fecha"  model="currentRecord.fecha" ng-init="currentRecord.fecha" ></date-picker>               
+                            </div>
+
+                            <label for="name" class="col-md-2 right-text">Hora </label>
+                            <div class="col-md-10">
+                                <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />              
+                            </div>
+
+                            <label for="numPiso" class="col-md-2 right-text">Piso</label>
+                            <div class="col-md-10">
+                                <input id="numPiso" name="numPiso" class="form-control"  ng-model="currentRecord.numPiso" type="text" ng-init="currentRecord.numPiso" required />
+                            </div> 
+
+                            <label for="mesa" class="col-md-2 right-text">Capacidad mesas diponible </label>
+                            <div class="col-md-10">
+                                <select id="mesa" name="mesa" ng-options="rc.capacidad for rc in mesas track by rc.id" class="form-control" ng-model="currentRecord.mesa" ng-init="currentRecord.mesa" type="text"  ></select>
+                            </div>
+
+                        </div>               
+                    </fieldset>
+                    <div class="col-md-12 social_info">
+                        <div class="col-md-2"></div> 
+                        <button type="button" class="text-center btn form-btn" ui-sref='reservasClienteList'>Cancelar</button>
+                        <button type="submit" class="text-center btn form-btn2" >Reservar</button>
+                    </div>   
+                </form>
+            </div>
+
+        </div>
+
+</section>

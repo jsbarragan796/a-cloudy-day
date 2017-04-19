@@ -1,0 +1,40 @@
+<div class="col-md-12 well">
+    <form novalidate name="form" id="review-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+
+        <div ng-messages="form.$error">
+            <div ng-message="required">Fill the required fields!</div>
+        </div>
+
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+            <!-- Name -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="name" class="col-md-2 control-label">Name</label>
+                <div class="col-md-10">
+                    <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
+                </div>
+            </div>
+            <!-- Precio -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="precio" class="col-md-2 control-label">Precio</label>
+                <div class="col-md-10">
+                    <input id="precio" name="precio" class="form-control" type="text" ng-model="currentRecord.precio" ng-init="currentRecord.precio" required />
+                </div>
+            </div>
+            <!-- Descripcion -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="descripcion" class="col-md-2 control-label">Descripcion</label>
+                <div class="col-md-10">
+                    <input id="descripcion" name="descripcion" class="form-control" type="text" ng-model="currentRecord.descripcion" ng-init="currentRecord.descripcion" required />
+                </div>
+            </div>
+          
+             </fieldset>
+            <div class="form-group col-md-12">
+                <button type="button" ui-sref='platosEspList'>Cancel</button>
+                <button type="submit" >Save</button>   
+            </div>
+       
+    </form>
+</div>
+
