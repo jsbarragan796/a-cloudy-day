@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DetailPage } from '../pages/detail/detail';
+import {DetVehiculo} from '../pages/det-vehiculo/det-vehiculo';
 import { Geolocation } from '@ionic-native/geolocation';
 
 
@@ -20,7 +21,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     ContactPage,
     HomePage,
     TabsPage,
-    DetailPage
+    DetailPage,
+    DetVehiculo
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     ContactPage,
     HomePage,
     TabsPage,
-    DetailPage
+    DetailPage,
+    DetVehiculo
   ],
   providers: [
     Geolocation,

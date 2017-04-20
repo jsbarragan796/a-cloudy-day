@@ -1,27 +1,45 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      <ion-icon name="person" item-left> </ion-icon>
+      Perfil
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <div #wrapper>
-    <ion-list >
-      <ion-list-header>Follow us on Twitter</ion-list-header>
+
+  <ion-card>
+    <ion-card-header>
+      Datos personales
+    </ion-card-header>
+
+    <ion-card-content>
       <ion-item>
-        <ion-icon name="ionic" item-left></ion-icon>
-        @ionicframework
+        <h3><strong>Nombres: </strong>{{usuario.nombres}}</h3>
+        <h3><strong>Apellidos: </strong>{{usuario.apellidos}}</h3>
+        <h3><strong>Usuario: </strong>{{usuario.usuario}}</h3>
       </ion-item>
-    </ion-list>
-    <div>
-      <h4>Nombre</h4>
-      <p>75 pesos/min</p>
-      <p>340 metros a destino</p>
-      <ion-fab>
-   <button ion-fab>Button</button>
- </ion-fab>
-    </div>
-  </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Vehículos registrados
+    </ion-card-header>
+
+    <ion-card-content *ngFor="let vehiculo of usuario.vehiculos">
+      <ion-item>
+        <h3><strong>Placa: </strong>{{vehiculo.placa}}</h3>
+        <h3><strong>Tipo vehículo : </strong>{{vehiculo.tipo}}</h3>
+        <button ion-button clear item-right (click)="viewVehiculo(vehiculo)">Ver</button>
+      </ion-item>
+    </ion-card-content>
+
+
+
+  </ion-card>
+
+  <button ion-button block (click)="createVehiculo()" >Agregar vehículo</button>
 </ion-content>

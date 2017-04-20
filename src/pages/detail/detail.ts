@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /**
 * Generated class for the Detail page.
@@ -13,10 +14,28 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detail.html',
 })
 export class DetailPage {
-  item :any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.item =navParams.get('item');
+
+  usuario={nombres:'',
+           apellidos:'',
+           usuario:''};
+           
+  authForm : FormGroup;
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,fb: FormBuilder) {
+    this.usuario =navParams.get('usuario');
+
+    this.authForm = fb.group({
+		  'nombres' : [null, Validators.compose([Validators.required])],
+		  'apellidos': [null, Validators.compose([Validators.required])],
+		})
   }
 
-  
+
+  submitForm():void{
+		console.log('Form submited!')
+		console.log(this.authForm.value);
+	}
+
+
 }
