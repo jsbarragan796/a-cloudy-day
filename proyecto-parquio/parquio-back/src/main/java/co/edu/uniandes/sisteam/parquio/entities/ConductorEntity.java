@@ -28,13 +28,18 @@ public class ConductorEntity extends BaseEntity implements Serializable
     private String nombres;
     private String apellidos;
 
-//    @PodamExclude
-//    @OneToMany (mappedBy = "conduce",cascade = CascadeType.ALL)
-//    private List<CarroEntity> carros = new ArrayList<>();
-//
-//    @PodamExclude
-//    @OneToMany(mappedBy = "misFavoritos",cascade = CascadeType.ALL)
-//    private List<FavoritoEntity> favoritos = new ArrayList<>();
+    @PodamExclude
+    @OneToMany (mappedBy = "conduce",cascade = CascadeType.ALL)
+    private List<CarroEntity> carros = new ArrayList<>();
+
+    @PodamExclude
+    @OneToMany(mappedBy = "misFavoritos",cascade = CascadeType.ALL)
+    private List<FavoritoEntity> favoritos = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "misReservas",cascade = CascadeType.ALL)
+    private List<ReservaEntity> reservas = new ArrayList<>();
+
 
     public String getUsuario() {
         return usuario;
@@ -68,23 +73,29 @@ public class ConductorEntity extends BaseEntity implements Serializable
         this.apellidos = apellidos;
     }
 
-//    public List<CarroEntity> getCarros() {
-//        return carros;
-//    }
-//
-//    public void setCarros(List<CarroEntity> carros) {
-//        this.carros = carros;
-//    }
-//
-//    public List<FavoritoEntity> getFavoritos() {
-//        return favoritos;
-//    }
-//
-//    public void setFavoritos(List<FavoritoEntity> favoritos) {
-//        this.favoritos = favoritos;
-//    }
+    public List<CarroEntity> getCarros() {
+        return carros;
+    }
 
-   
+    public void setCarros(List<CarroEntity> carros) {
+        this.carros = carros;
+    }
+
+    public List<FavoritoEntity> getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(List<FavoritoEntity> favoritos) {
+        this.favoritos = favoritos;
+    }  
+
+    public List<ReservaEntity> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<ReservaEntity> reservas) {
+        this.reservas = reservas;
+    }
     
     
 }
