@@ -31,7 +31,7 @@ public class ConductorLogic implements IConductorLogic {
     }
 
     @Override
-    public ConductorEntity getConductorCedula(Long cedula) {
+    public ConductorEntity getConductorCedula(int cedula) {
         return persistence.findByCedula(cedula);
     }
 

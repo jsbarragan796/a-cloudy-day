@@ -32,7 +32,7 @@ public class ConductorPersistence {
         return em.find(ConductorEntity.class, id);
     }
 
-    public ConductorEntity findByCedula(Long cedula) {
+    public ConductorEntity findByCedula(int cedula) {
         LOGGER.log(Level.INFO, "Consultando conductor con cedula = {0}", cedula);
         TypedQuery<ConductorEntity> q
          = em.createQuery("select u from ConductorEntity u where u.cedula = :cedula", ConductorEntity.class);

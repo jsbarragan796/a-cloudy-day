@@ -17,7 +17,7 @@ public interface IConductorLogic {
 
     public ConductorEntity getConductorId(Long conductorId);
 
-    public ConductorEntity getConductorCedula(Long cedula);
+    public ConductorEntity getConductorCedula(int cedula);
     
     public List<ConductorEntity> getConductores();
 

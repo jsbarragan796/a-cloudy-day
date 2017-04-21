@@ -24,7 +24,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ConductorEntity extends BaseEntity implements Serializable 
 {
     private String usuario;
-    private Long cedula;
+    private int cedula;
     private String nombres;
     private String apellidos;
 
@@ -44,11 +44,11 @@ public class ConductorEntity extends BaseEntity implements Serializable
         this.usuario = usuario;
     }
 
-    public Long getCedula() {
+    public int getCedula() {
         return cedula;
     }
 
-    public void setCedula(Long cedula) {
+    public void setCedula(int cedula) {
         this.cedula = cedula;
     }
 

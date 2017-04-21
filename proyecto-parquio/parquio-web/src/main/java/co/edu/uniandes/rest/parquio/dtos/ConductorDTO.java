@@ -19,7 +19,7 @@ public class ConductorDTO {
     private Long id;
 
     private String usuario;
-    private Long cedula;
+    private int cedula;
     private String nombres;
     private String apellidos;
 
@@ -27,7 +27,7 @@ public class ConductorDTO {
      * Constructor
      *
      */
-    public ConductorDTO(String usuario, Long cedula, String nombres, String apellidos) {
+    public ConductorDTO(String usuario, int cedula, String nombres, String apellidos) {
         super();
         this.usuario = usuario;
         this.cedula = cedula;
@@ -92,11 +92,11 @@ public class ConductorDTO {
         this.usuario = usuario;
     }
 
-    public Long getCedula() {
+    public int getCedula() {
         return cedula;
     }
 
-    public void setCedula(Long cedula) {
+    public void setCedula(int cedula) {
         this.cedula = cedula;
     }
 
