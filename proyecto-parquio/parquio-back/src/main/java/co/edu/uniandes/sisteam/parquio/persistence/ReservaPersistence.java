@@ -38,7 +38,7 @@ public class ReservaPersistence {
 
     private static final Logger LOGGER = Logger.getLogger(ReservaPersistence.class.getName());
 
-    @PersistenceContext(unitName = "ParquioPU")
+    @PersistenceContext(unitName = "SisteamParquioPU")
     protected EntityManager em;
 
     public ReservaEntity find(Long id) {

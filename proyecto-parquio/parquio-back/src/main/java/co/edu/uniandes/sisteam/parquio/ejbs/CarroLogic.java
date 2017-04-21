@@ -85,7 +85,7 @@ public class CarroLogic implements ICarroLogic {
     @Override
     public CarroEntity createCarro(Long conductorid, CarroEntity entity) {
         ConductorEntity conductor = conductorLogic.getConductorId(conductorid);
-        //conductor.add(entity);
+        conductor.add(entity);
         entity.setConductor(conductor);
         entity = persistence.create(entity);
         return entity;

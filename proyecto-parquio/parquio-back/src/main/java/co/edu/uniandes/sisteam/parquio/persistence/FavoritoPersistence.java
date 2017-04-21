@@ -38,7 +38,7 @@ public class FavoritoPersistence {
 
     private static final Logger LOGGER = Logger.getLogger(FavoritoPersistence.class.getName());
 
-    @PersistenceContext(unitName = "ParquioPU")
+    @PersistenceContext(unitName = "SisteamParquioPU")
     protected EntityManager em;
 
     public FavoritoEntity find(Long id) {

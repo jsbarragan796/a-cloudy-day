@@ -85,7 +85,7 @@ public class ReservaLogic implements IReservaLogic {
     @Override
     public ReservaEntity createReserva(Long conductorid, ReservaEntity entity) {
         ConductorEntity conductor = conductorLogic.getConductorId(conductorid);
-        //conductor.add(entity);
+        conductor.add(entity);
         entity.setConductor(conductor);
         entity = persistence.create(entity);
         return entity;

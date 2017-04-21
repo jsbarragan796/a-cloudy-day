@@ -52,7 +52,7 @@ public class FavoritoEntity extends BaseEntity implements Serializable {
         return conductor;
     }
 
-    public void setConductor(ConductorEntity sucursal) {
+    public void setConductor(ConductorEntity conductor) {
         this.conductor = conductor;
     }
 

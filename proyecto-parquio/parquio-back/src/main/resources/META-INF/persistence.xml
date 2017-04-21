@@ -4,9 +4,10 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:app/jdbc/parquio</jta-data-source>
     <class>co.edu.uniandes.sisteam.parquio.entities.BaseEntity</class>
-    
     <class>co.edu.uniandes.sisteam.parquio.entities.ConductorEntity</class>
-    
+    <class>co.edu.uniandes.sisteam.parquio.entities.CarroEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.FavoritoEntity</class>
+    <class>co.edu.uniandes.sisteam.parquio.entities.ReservaEntity</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

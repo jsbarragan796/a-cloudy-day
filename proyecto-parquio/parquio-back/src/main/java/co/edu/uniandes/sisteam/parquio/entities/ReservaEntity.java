@@ -40,7 +40,6 @@ public class ReservaEntity extends BaseEntity implements Serializable {
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;  
-    
     private double duracion;
  
     public ConductorEntity getConductor() 
@@ -48,7 +47,7 @@ public class ReservaEntity extends BaseEntity implements Serializable {
         return conductor;
     }
 
-    public void setConductor(ConductorEntity sucursal) {
+    public void setConductor(ConductorEntity conductor) {
         this.conductor = conductor;
     }
 

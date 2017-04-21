@@ -21,25 +21,24 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author BarraganJeronimo
  */
 @Entity
-public class ConductorEntity extends BaseEntity implements Serializable 
-{
+public class ConductorEntity extends BaseEntity implements Serializable {
+
     private String usuario;
     private int cedula;
     private String nombres;
     private String apellidos;
 
     @PodamExclude
-    @OneToMany (mappedBy = "conduce",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "conductor", cascade = CascadeType.ALL)
     private List<CarroEntity> carros = new ArrayList<>();
 
     @PodamExclude
-    @OneToMany(mappedBy = "misFavoritos",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "conductor", cascade = CascadeType.ALL)
     private List<FavoritoEntity> favoritos = new ArrayList<>();
-    
-    @PodamExclude
-    @OneToMany(mappedBy = "misReservas",cascade = CascadeType.ALL)
-    private List<ReservaEntity> reservas = new ArrayList<>();
 
+    @PodamExclude
+    @OneToMany(mappedBy = "conductor", cascade = CascadeType.ALL)
+    private List<ReservaEntity> reservas = new ArrayList<>();
 
     public String getUsuario() {
         return usuario;
@@ -87,7 +86,7 @@ public class ConductorEntity extends BaseEntity implements Serializable
 
     public void setFavoritos(List<FavoritoEntity> favoritos) {
         this.favoritos = favoritos;
-    }  
+    }
 
     public List<ReservaEntity> getReservas() {
         return reservas;
@@ -96,6 +95,16 @@ public class ConductorEntity extends BaseEntity implements Serializable
     public void setReservas(List<ReservaEntity> reservas) {
         this.reservas = reservas;
     }
-    
-    
+
+    public void add(FavoritoEntity favorito) {
+        this.favoritos.add(favorito);
+    }
+
+    public void add(CarroEntity carro) {
+        this.carros.add(carro);
+    }
+
+    public void add(ReservaEntity reserva) {
+        this.reservas.add(reserva);
+    }
 }
