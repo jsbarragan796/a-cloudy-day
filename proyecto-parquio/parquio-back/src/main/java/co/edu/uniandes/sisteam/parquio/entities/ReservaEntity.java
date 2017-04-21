@@ -41,6 +41,7 @@ public class ReservaEntity extends BaseEntity implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;  
     private double duracion;
+    private int idParqueadero;
  
     public ConductorEntity getConductor() 
     {
@@ -63,12 +64,17 @@ public class ReservaEntity extends BaseEntity implements Serializable {
         return duracion;
     }
 
-    public void setDuracion(double duracion) {
+    public void setDuracion(double duracion) 
+    {
         this.duracion = duracion;
     }
-    
-    
 
-    
-    
+    public int getIdParqueadero() {
+        return idParqueadero;
+    }
+
+    public void setIdParqueadero(int idParqueadero) {
+        this.idParqueadero = idParqueadero;
+    }
+ 
 }

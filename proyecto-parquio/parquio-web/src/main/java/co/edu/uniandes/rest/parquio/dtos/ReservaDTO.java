@@ -10,56 +10,55 @@ import java.util.Date;
 
 /**
  * Objeto de transferencia de datos de Ciudades.
+ *
  * @author Asistente
  */
 public class ReservaDTO {
-    
+
     private Long id;
-    
+
     private Date fecha;
-   private double duracion;
-    
-    
+    private double duracion;
+    private int idParqueadero;
+
     /**
      * Constructor por defecto
      */
     public ReservaDTO() {
-	}
+    }
 
-    public ReservaDTO(Long id, Date fecha, double duracion) {
+    public ReservaDTO(Long id, Date fecha, double duracion, int idParqueadero) {
         this.id = id;
         this.fecha = fecha;
         this.duracion = duracion;
+        this.idParqueadero = idParqueadero;
     }
 
-   
-
-    
-    
     public ReservaDTO(ReservaEntity entity) {
         if (entity != null) {
             this.id = entity.getId();
             this.fecha = entity.getFecha();
             this.duracion = entity.getDuracion();
-            
+            this.idParqueadero = entity.getIdParqueadero();
         }
     }
-    
-     /**
+
+    /**
      * Convierte un objeto ReservaDTO a ReservaEntity.
      *
      * @return Nueva objeto ReservaEntity.
-     * 
+     *
      */
     public ReservaEntity toEntity() {
         ReservaEntity entity = new ReservaEntity();
         entity.setId(this.getId());
         entity.setFecha(this.getFecha());
         entity.setDuracion(this.getDuracion());
+        entity.setIdParqueadero(this.getIdParqueadero());
         return entity;
     }
 
-	/**
+    /**
      * @return the id
      */
     public Long getId() {
@@ -87,6 +86,14 @@ public class ReservaDTO {
 
     public void setDuracion(double duracion) {
         this.duracion = duracion;
+    }
+
+    public int getIdParqueadero() {
+        return idParqueadero;
+    }
+
+    public void setIdParqueadero(int idParqueadero) {
+        this.idParqueadero = idParqueadero;
     }
 
     

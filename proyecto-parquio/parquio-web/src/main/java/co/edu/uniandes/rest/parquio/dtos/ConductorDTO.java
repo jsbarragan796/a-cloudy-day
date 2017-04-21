@@ -65,12 +65,12 @@ public class ConductorDTO {
 
         ConductorEntity entity = new ConductorEntity();
 
-        entity.setId(id);
+        entity.setId(this.getId());
 
-        entity.setUsuario(usuario);
-        entity.setCedula(cedula);
-        entity.setApellidos(apellidos);
-        entity.setNombres(nombres);
+        entity.setUsuario(this.getUsuario());
+        entity.setCedula(this.getCedula());
+        entity.setApellidos(this.getApellidos());
+        entity.setNombres(this.getNombres());
 
         return entity;
 
