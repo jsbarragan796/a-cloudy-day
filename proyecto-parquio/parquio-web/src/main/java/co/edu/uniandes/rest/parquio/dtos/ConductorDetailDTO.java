@@ -1,0 +1,82 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package co.edu.uniandes.rest.parquio.dtos;
+
+import co.edu.uniandes.sisteam.parquio.entities.ConductorEntity;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author BarraganJeronimo
+ */
+public class ConductorDetailDTO extends ConductorDTO {
+//
+////    private List<CarroDTO> carros = new ArrayList<>();
+////
+////    private List<FavoritoDTO> favoritos = new ArrayList<>();
+//
+    public ConductorDetailDTO() {
+        super();
+    }
+//
+    public ConductorDetailDTO(ConductorEntity entity) {
+        super(entity);
+
+//        if (entity != null) {
+//
+//            List<CarroEntity> carrosEntity = entity.getCarros();
+//            for (CarroEntity carro : carrosEntity) {
+//                this.carros.add(new CarroDTO(carro));
+//            }
+//
+//            List<FavoritosEntity> farovitosEntity = entity.getFavoritos();
+//            for (FavoritoEntity favorito : favoritosEntity) {
+//                this.favoritos.add(new FavoritoDTO(favorito));
+//            }
+//        }
+
+    }
+    
+
+    @Override
+    public ConductorEntity toEntity() {
+
+        ConductorEntity entity = super.toEntity();
+// 
+//        List<CarroDTO> carros2 = this.carros;
+//        for (CarroDTO carro : carros2) {
+//            entity.getCarros().add(carro.toEntity());
+//        }
+//        
+//        List<FavoritoDTO> favoritos2 = this.favoritos;
+//        for (FavoritoDTO favorito : favoritos2) {
+//            entity.getFavoritos().add(favorito.toEntity());
+//        }
+//
+        return entity;
+
+    }
+//
+//    public List<CarroDTO> getCarros() {
+//        return carros;
+//    }
+//
+//    public void setCarros(List<CarroDTO> carros) {
+//        this.carros = carros;
+//    }
+//
+//    public List<FavoritoDTO> getFavoritos() {
+//        return favoritos;
+//    }
+//
+//    public void setFavoritos(List<FavoritoDTO> favoritos) {
+//        this.favoritos = favoritos;
+//    }
+//
+//
+//
+}

@@ -3,17 +3,10 @@
   <persistence-unit name="SisteamParquioPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:app/jdbc/parquio</jta-data-source>
-    <class>co.edu.uniandes.sisteam.parquio.entities.ConsejoEntity</class>
-    <class>co.edu.uniandes.sisteam.parquio.entities.PacienteEntity</class>
-    <class>co.edu.uniandes.sisteam.parquio.entities.ExamenEntity</class>
-    <class>co.edu.uniandes.sisteam.parquio.entities.DiagnosticoEntity</class>
-    <class>co.edu.uniandes.sisteam.parquio.entities.MedicoEntity</class>
-    <class>co.edu.uniandes.sisteam.parquio.entities.EmergenciaEntity</class>
-    <class>co.edu.uniandes.sisteam.parquio.entities.MedicionEntity</class>
     <class>co.edu.uniandes.sisteam.parquio.entities.BaseEntity</class>
-    <class>co.edu.uniandes.sisteam.parquio.entities.HistoriaClinicaEntity</class>
-    <class>co.edu.uniandes.sisteam.parquio.entities.MarcapasosEntity</class>
-    <class>co.edu.uniandes.sisteam.parquio.entities.TratamientoEntity</class>
+    
+    <class>co.edu.uniandes.sisteam.parquio.entities.ConductorEntity</class>
+    
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
