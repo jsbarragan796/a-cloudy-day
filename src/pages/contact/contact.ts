@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import {DetailPage} from '../detail/detail';
 import {DetVehiculo} from '../det-vehiculo/det-vehiculo';
 
@@ -11,26 +11,25 @@ import {DetVehiculo} from '../det-vehiculo/det-vehiculo';
 export class ContactPage {
 
 
-  usuario={usuario:'jusebast',nombres:'Juan Sebastian',
-  apellidos:'Barragan Jeronimo',
-  vehiculos:[{tipo:'Camioneta',
-  placa:'ZYW 000'},{tipo:'Camioneta',
-  placa:'ZAA 000'}]
- };
+  usuario:any;
 
-constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,params: NavParams) {
 
+    if(params.data!==undefined){
+      this.usuario =params.data;
+    }
 
-}
+  }
 
-viewVehiculo(vehiculo){
-  this.navCtrl.push(DetVehiculo, {
-    vehiculo:vehiculo
-  });
-}
+  viewVehiculo(vehiculo){
+    this.navCtrl.push(DetVehiculo, {
+      vehiculo:vehiculo
+    });
+  }
 
-createVehiculo(){
-  this.navCtrl.push(DetVehiculo, {vehiculo:undefined});
-}
+  createVehiculo(){
+    this.navCtrl.push(DetVehiculo, {vehiculo:undefined});
+
+  }
 
 }

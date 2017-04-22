@@ -1,10 +1,19 @@
 
 
 <ion-content >
-    <div #map id="map"></div>
+  <div #map id="map"></div>
   <ion-fab right bottom>
-   <button ion-fab  icon-only (click)="locateUserBoton()">
-     <ion-icon name="ios-locate-outline"></ion-icon>
-   </button>
- </ion-fab>
+
+      <button ion-fab  icon-only (click)="favUserBoton()">
+        <ion-icon name="star"></ion-icon>
+      </button>
+      <div class="space">
+      </div>
+      <button ion-fab  icon-only (click)="locateUserBoton()">
+        <ion-icon name="locate-outline"></ion-icon>
+      </button>
+      <div class="space">
+      </div>
+
+  </ion-fab>
 </ion-content>/

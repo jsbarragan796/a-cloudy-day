@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DetailPage } from '../pages/detail/detail';
 import {DetVehiculo} from '../pages/det-vehiculo/det-vehiculo';
 import { Geolocation } from '@ionic-native/geolocation';
+import { InicioPerfil } from '../pages/inicio-perfil/inicio-perfil';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     HomePage,
     TabsPage,
     DetailPage,
-    DetVehiculo
+    DetVehiculo,
+    InicioPerfil
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     HomePage,
     TabsPage,
     DetailPage,
-    DetVehiculo
+    DetVehiculo,
+    InicioPerfil 
   ],
   providers: [
     Geolocation,

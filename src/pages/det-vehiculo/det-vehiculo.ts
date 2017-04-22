@@ -25,10 +25,13 @@ export class DetVehiculo {
   }
 
   submitForm():void{
-		console.log('Form submited!')
+    console.log('Form submited!')
     this.vehiculo=this.authForm.value;
-		console.log(this.authForm.value);
+    console.log(this.authForm.value);
     console.log(this.vehiculo);
-	}
+    this.navCtrl.pop();
+  }
+
+
 
 }

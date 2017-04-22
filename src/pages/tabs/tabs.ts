@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import { AboutPage } from '../about/about';
+import { NavController, NavParams } from 'ionic-angular';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
 
@@ -10,11 +9,19 @@ import { HomePage } from '../home/home';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = AboutPage;
+  tab2Root = ContactPage;
   tab3Root = ContactPage;
-  tab4Root = ContactPage;
 
-  constructor() {
+  usuario:any;
 
+  constructor(params: NavParams ) {
+    this.usuario= params.get('usuario');
+    console.log("en tabs");
   }
+
+  ionViewDidLoad(){
+    console.log("en tabs!!");
+    console.log(this.usuario);
+  }
+
 }
