@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Felicitaciones reservación exitosa
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      Datos parqueadero
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <h3><strong>Nombre parqueadero: </strong>{{parqueadero.nombre}}</h3>
+        <h3><strong>Direccion: </strong>{{parqueadero.lat}} " " {{parqueadero.long}}  </h3>
+        <h3><strong>Precio: </strong>{{parqueadero.precio}}</h3>
+        <h3><strong>Valet parking: </strong> Solo dejando llaves</h3>
+
+        <h3><strong>Horario L-V: </strong> 5 AM - 11 PM </h3>
+        <h3><strong>Horario S-D-F: </strong> 6 AM - 5 PM</h3>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <button ion-button item-right (click)="irMapa()">
+    Finalizar
+  </button>
+
+
+
+</ion-content>

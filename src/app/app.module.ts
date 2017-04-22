@@ -13,6 +13,9 @@ import { DetailPage } from '../pages/detail/detail';
 import {DetVehiculo} from '../pages/det-vehiculo/det-vehiculo';
 import { Geolocation } from '@ionic-native/geolocation';
 import { InicioPerfil } from '../pages/inicio-perfil/inicio-perfil';
+import { DetalleReserva } from '../pages/detalle-reserva/detalle-reserva';
+import {AgregarFavorito} from '../pages/agregarfavorito/agregarfavorito';
+import {InfoReserva} from '../pages/inforeserva/inforeserva';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { InicioPerfil } from '../pages/inicio-perfil/inicio-perfil';
     TabsPage,
     DetailPage,
     DetVehiculo,
-    InicioPerfil
+    InicioPerfil,
+    DetalleReserva,
+    AgregarFavorito,
+    InfoReserva
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,10 @@ import { InicioPerfil } from '../pages/inicio-perfil/inicio-perfil';
     TabsPage,
     DetailPage,
     DetVehiculo,
-    InicioPerfil 
+    InicioPerfil,
+    DetalleReserva,
+    AgregarFavorito,
+    InfoReserva
   ],
   providers: [
     Geolocation,

@@ -21,10 +21,10 @@ export class InicioPerfil {
   vehiculos:[{tipo:'Camioneta',
   placa:'ZYW 000'},{tipo:'Camioneta',
   placa:'ZAA 000'}],
-  favoritos:[{nombre:'La universidad',posicion:{coords:{latitude:4.30058,longitude:-74.0668845}}},
-  {nombre:'Donde pacho',posicion:{coords:{latitude:4.30058,longitude:-74.0668845}}},
-  {nombre:'Usaquen',posicion:{coords:{latitude:4.30058,longitude:-74.0668845}}},
-  {nombre:'Tía Olga',posicion:{coords:{latitude:4.30058,longitude:-74.0668845}}}]
+  favoritos:[{nombre:'La universidad',posicion:{coords:{latitude:4.60836,longitude:-74.0668845}}},
+  {nombre:'Donde pacho',posicion:{coords:{latitude:4.6036,longitude:-74.0668845}}},
+  {nombre:'Usaquen',posicion:{coords:{latitude:4.60836,longitude:-74.0668845}}},
+  {nombre:'Tía Olga',posicion:{coords:{latitude:4.60836,longitude:-74.0668845}}}]
 };
 
 

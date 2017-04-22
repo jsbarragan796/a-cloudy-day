@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {DetailPage} from '../detail/detail';
 import {DetVehiculo} from '../det-vehiculo/det-vehiculo';
+
 
 
 @Component({
@@ -18,6 +18,7 @@ export class ContactPage {
     if(params.data!==undefined){
       this.usuario =params.data;
     }
+
 
   }
 
