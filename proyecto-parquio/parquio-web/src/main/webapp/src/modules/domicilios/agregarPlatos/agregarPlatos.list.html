@@ -1,0 +1,26 @@
+<div class="col-md-12">
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>    
+                    <th>Precio</th>    
+                    <th>Descripcion</th>    
+  
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="record in agregarPlatos">
+                    <td id="{{$index}}-name">{{record.nombre}}</td>  
+                    <td id="{{$index}}-name">{{record.precio}}</td>  
+                    <td id="{{$index}}-name">{{record.descripcion}}</td>  
+                    <td>
+                        <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ng-click="ctrl.agregarRecordPlato(record)"><span class="glyphicon glyphicon-minus"></span>Agregar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

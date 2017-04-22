@@ -1,0 +1,33 @@
+<div class="col-md-12 well">
+    <form novalidate name="form" id="review-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord2.id)">
+
+        <div ng-messages="form.$error">
+            <div ng-message="required">Fill the required fields!</div>
+        </div>
+
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord2.id"/>
+            <!-- Tipo -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="tipo" class="col-md-2 control-label">Tipo</label>
+                <div class="col-md-10">
+                    <input id="tipo" name="tipo" class="form-control" type="text" ng-model="currentRecord2.tipo" ng-init="currentRecord2.tipo" required />
+                </div>
+            </div>
+            <!-- Numero -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="num" class="col-md-2 control-label">Numero</label>
+                <div class="col-md-10">
+                    <input id="name" name="num" class="form-control" type="text" ng-model="currentRecord2.num" ng-init="currentRecord2.num" required />
+                </div>
+            </div>
+          
+             </fieldset>
+            <div class="form-group col-md-12">
+                <button type="button" ui-sref='mdpsList({idCliente:currentRecord.id})'>Cancel</button>
+                <button type="submit" >Save</button>   
+            </div>
+       
+    </form>
+</div>
+

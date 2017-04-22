@@ -1,0 +1,52 @@
+
+<section id ="plato" class="description_content">
+    <div  class="beer background_content">
+        <h1>Deliciosos platos</h1>
+    </div>
+    <div class="text-content container"> 
+        <div class="col-md-4">
+            <div class="img-section">
+                <img src="images/slider3.JPG" width="100%">
+            </div>
+
+        </div>
+
+        <div class="col-md-8 col-md-offset-0">
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="text text-justify" > 
+                        <th>Nombre </th>        
+                        <th>Precio</th>
+                        <th>Descripción</th>            
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text text-justify" ng-repeat="record in records">
+                        <td id="{{$index}}-nombre">{{record.nombre}}</td>
+                        <td id="{{$index}}-precio">{{record.precio}}</td>
+                        <td id="{{$index}}-descripcion">{{record.descripcion}}</td>
+                        <td>
+                            <button id="{{$index}}-edit-btn" class="btn form-btn" ui-sref="platosEdit({id: record.id})"><span class="glyphicon glyphicon-edit"></span> Detalles</button>
+                            <button id="{{$index}}-delete-btn" class="btn  form-btn2" ng-click="ctrl.deleteRecord(record.id)"><span class="glyphicon glyphicon-minus"></span> Eliminar </button>
+                        </td>
+                    </tr>
+                    <tr class="text text-justify">
+
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td >
+                            <button class="btn form-btn" ui-sref="platosCreate"><span class="glyphicon glyphicon-plus-sign"></span> Agregar plato</button>    
+                            <button class="btn form-btn2" ui-sref="platosList"><span class="glyphicon glyphicon-user"></span> Finalizar edición</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+</section>

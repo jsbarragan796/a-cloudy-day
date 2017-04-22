@@ -1,0 +1,34 @@
+<div class="container-fluid" >
+   
+    <table class="table table-striped" class="col-md-4">
+        <thead>
+            <tr>
+                <th>Sucursal</th>
+                <th>Cliente</th>
+                <th>Distancia Aprovada</th>
+                <th>Lugar Entrega</th>
+                <th>Platos Domicilio</th>
+                <th>Descuento</th>
+                <th>Entregado</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in records">
+                <td id="{{$index}}-name">{{record.sucursal.direccion}}</td>
+                <td id="{{$index}}-name">{{record.cliente.username}}</td>
+                <td id="{{$index}}-name">{{record.distanciaAprovada}}</td>
+                <td id="{{$index}}-name">{{record.lugarEntrega}}</td>
+                <td id="{{$index}}-name">{{record.platosDomicilio}}</td>
+                <!--<td ng-repeat-start= "platosDomicilio in record">{{platosDomicilio.nombre}}</td>-->
+                <td id="{{$index}}-name">{{record.descuento}}</td>
+                <td id="{{$index}}-name">{{record.entregado}}</td>
+                <td>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="domicilioEdit({id: record.idDomicilio})"><span class="glyphicon glyphicon-edit"></span> Ver Platos</button>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record.idDomicilio)"><span class="glyphicon glyphicon-minus"></span> Cancelar</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<div class="col-md-12 well">
+    <form novalidate name="form" id="book-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+
+        
+
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+            
+           
+            <!-- Publishing Date -->
+            <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+
+                <label for="fechaBusqueda" class="col-md-2 control-label">Fecha de busqueda:</label>
+                <div class="col-md-10">
+                    <date-picker model="currentRecord.fechaBusqueda"></date-picker>
+                </div>
+            </div>
+           
+           
+             </fieldset>
+            <div class="form-group col-md-12">
+                <button type="submit" >Buscar</button>   
+            </div>
+       
+    </form>
+</div>
+<div class="container-fluid" >
+   
+    <table class="table table-striped" class="col-md-4">
+        <thead>
+            <tr>  
+                <th>Id Cliente</th>
+                <th>Distancia</th>
+                <th>Lugar de Entrega</th>
+                <th>Descuento</th>
+                <th>Entregado</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in selectedDomicilios">
+                <td id="{{$index}}-name">{{record.idCliente}}</td>
+                <td id="{{$index}}-name">{{record.distanciaAprovada}}</td>
+                <td id="{{$index}}-name">{{record.lugarEntrega}}</td>
+                <td id="{{$index}}-name">{{record.descuento}}</td>
+                <td id="{{$index}}-name">{{record.entregado}}</td>
+                <td id="{{$index}}-name">{{record.fecha}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,54 @@
+
+
+
+<section id ="sucursalReservas" class="description_content">
+    <div class="text text-content container">
+        <div class="container-fluid" >
+
+            <table class="table table-condensed" >
+                <thead>
+                    <tr  class="text-center ">    
+                        <th>Número de personas</th>
+                        <th>Hora</th>
+                        <th>Piso</th>        
+                        <th>Nombre del cliente</th>
+                        <th>Identificador mesa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text text-justify" ng-repeat="record in selectedReservas">
+
+                        <td id="{{$index}}-name">{{record.numPersonas}}</td>
+                        <td id="{{$index}}-name">{{record.name}}</td>
+                        <td id="{{$index}}-name">{{record.numPiso}}</td>
+                        <td id="{{$index}}-name">{{record.cliente.username}}</td>
+                        <td id="{{$index}}-name">{{record.mesa.id}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <form novalidate name="form" id="book-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(recordSearch)">
+
+                <fieldset>
+
+                    <div class="form-group col-md-6" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+
+                        <label for="recordSearch" class="col-md-2 social_info">Fecha de busqueda:</label>
+                        <div class="col-md-10">
+                            <date-picker model="recordSearch"></date-picker>
+                        </div>
+                    </div>
+
+                </fieldset>
+                <div class="form-group col-md-12">
+                    <button type="submit" class="text-center form-btn " >Buscar</button>   
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</section>
+
+

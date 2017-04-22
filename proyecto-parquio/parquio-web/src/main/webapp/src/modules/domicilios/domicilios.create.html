@@ -1,0 +1,60 @@
+
+<section id ="sucursal" class="description_content">
+
+    <div  class="featured background_content">
+        <h1>Domicilios</h1>
+    </div>
+    <div class="text-content container"> 
+        <div class="col-md-4">
+            <div class="img-section">
+                <img src="images/featured.jpg" width="100%">
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="container-fluid">
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+            <form novalidate name="form" id="domicilio-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.idDomicilio)">
+
+                <div ng-messages="form.$error">
+                    <div ng-message="required">Fill the required fields!</div>
+                </div>
+
+                <fieldset>
+                    <input id="id" class="form-control" type="hidden" ng-model="currentRecord.idDomicilio" ng-init="currentRecord.idDomicilio"/>
+                    <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+
+
+                        <label for="name" class="col-md-2 control-label">Sucursal</label>
+                        <div class="col-md-10">
+                            <select id="sucursal" name="sucursal" ng-options="rc.direccion for rc in sucursales track by rc.id" class="form-control" type="text" ng-model="currentRecord.sucursal" ></select>
+                        </div>
+
+                        <label for="name" class="col-md-2 control-label">Cliente</label>
+                        <div class="col-md-10">
+                            <input id="cliente" name="cliente" class="form-control" type="text" ng-model="cliente.username" ng-init="cliente.username" readonly>
+                        </div>
+
+                        <label for="name" class="col-md-2 control-label">Lugar Entrega</label>
+                        <div class="col-md-10">
+                            <input id="name" name="lugarEntrega" class="form-control" type="text" ng-model="currentRecord.lugarEntrega" ng-init="currentRecord.lugarEntrega" required />
+                        </div>
+
+                        <label for="name" class="col-md-2 control-label">Platos Domicilio</label>
+                        <div class="col-md-10">
+                            <input id="name" name="platosDomicilio" class="form-control" type="text" ng-model="currentRecord.platosDomicilio" ng-init="currentRecord.platosDomicilio" readonly />
+                        </div>
+
+                    </div>
+                    <button type="button" ui-sref='domiciliosList'>Cancel</button>
+                    <button type="submit" >Save</button>    
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</section>

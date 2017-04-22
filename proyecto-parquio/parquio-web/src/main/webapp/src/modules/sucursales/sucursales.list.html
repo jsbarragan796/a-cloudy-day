@@ -1,0 +1,38 @@
+<section id ="sucursal" class="description_content">
+    <div  class="beer background_content">
+        <h1>Elige una Sucursal para disfrutar de nuestros servicios</h1>
+    </div>
+    <div class="text-content container"> 
+        <div class="col-md-4">
+            <div class="img-section">
+                <img src="images/beer_spec.jpg" width="100%">
+            </div>
+
+        </div>
+
+        <div class="col-md-8 col-md-offset-0">
+
+            <table class="table table-condensed" >
+                <thead>
+                    <tr class="text text-center">
+                        <th>Nombre</th> 
+                        <th> Ubicación</th>   
+                        <th> Dirección</th> 
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" ng-repeat="record in records">
+                        <td id="{{$index}}-name">{{record.name}}</td>
+                        <td id="{{$index}}-ubicacion">{{record.ubicacion}}</td>
+                        <td id="{{$index}}-direccion">{{record.direccion}}</td>
+                        <td>
+                            <button id="{{$index}}-edit-btn" class="btn form-btn" ui-sref="sucursalMas({sucursalId:record.id})"><span class="glyphicon glyphicon-glass"></span> Más informacion</button>                    
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>
