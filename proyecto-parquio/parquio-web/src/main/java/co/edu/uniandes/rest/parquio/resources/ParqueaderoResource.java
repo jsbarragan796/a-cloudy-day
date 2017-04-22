@@ -23,11 +23,15 @@ SOFTWARE.
  */
 package co.edu.uniandes.rest.parquio.resources;
 
-
 import co.edu.uniandes.rest.parquio.dtos.ParqueaderoDTO;
+import co.edu.uniandes.rest.parquio.dtos.ReservaDTO;
+import co.edu.uniandes.rest.parquio.dtos.ReservaDetailDTO;
 import co.edu.uniandes.sisteam.parquio.api.IParqueaderoLogic;
+import co.edu.uniandes.sisteam.parquio.api.IReservaLogic;
 import co.edu.uniandes.sisteam.parquio.entities.ParqueaderoEntity;
+import co.edu.uniandes.sisteam.parquio.entities.ReservaEntity;
 import co.edu.uniandes.sisteam.parquio.exceptions.BusinessLogicException;
+import static java.lang.Math.toIntExact;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -43,6 +47,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import javax.inject.Inject;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 
 @Path("/parqueaderos")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -51,6 +56,9 @@ public class ParqueaderoResource {
 
     @Inject
     private IParqueaderoLogic parqueaderoLogic;
+
+    @Inject
+    private IReservaLogic reservaLogic;
 
     /**
      * Convierte una lista de ParqueaderoEntity a una lista de ParqueaderoDTO.
@@ -91,6 +99,33 @@ public class ParqueaderoResource {
     @Path("{id: \\d+}")
     public ParqueaderoDTO getParqueadero(@PathParam("id") Long id) {
         return new ParqueaderoDTO(parqueaderoLogic.getParqueaderoId(id));
+    }
+
+    @GET
+    @Path("{idparqueadero: \\d+}/reservas")
+    public List<ReservaDetailDTO> getReservasParqueadero(@PathParam("idparqueadero") Long idparqueadero) {
+        existsParqueadero(idparqueadero);
+
+        long foo = idparqueadero;
+        int bar = toIntExact(foo);
+        
+        List<ReservaEntity> reservas = reservaLogic.getReservasParqueadero(bar);
+        return listEntity2DTOReservas(reservas);
+    }
+
+    public void existsParqueadero(Long idparqueadero) {
+        ParqueaderoDTO parqueadero = new ParqueaderoDTO(parqueaderoLogic.getParqueaderoId(idparqueadero));
+        if (parqueadero == null) {
+            throw new WebApplicationException(404);
+        }
+    }
+
+    private List<ReservaDetailDTO> listEntity2DTOReservas(List<ReservaEntity> entityList) {
+        List<ReservaDetailDTO> list = new ArrayList<>();
+        for (ReservaEntity entity : entityList) {
+            list.add(new ReservaDetailDTO(entity));
+        }
+        return list;
     }
 
     /**

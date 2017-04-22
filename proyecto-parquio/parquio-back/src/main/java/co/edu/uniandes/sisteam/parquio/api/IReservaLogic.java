@@ -30,6 +30,7 @@ import java.util.List;
 public interface IReservaLogic {
   
     public List<ReservaEntity> getReservasConductor(Long conductorId);
+    public List<ReservaEntity> getReservasParqueadero(int parqueadero);
     public ReservaEntity getReserva(Long reservaId);
     public ReservaEntity createReserva(Long conductorId, ReservaEntity entity);
     public ReservaEntity updateReserva(Long conductorId, ReservaEntity entity);

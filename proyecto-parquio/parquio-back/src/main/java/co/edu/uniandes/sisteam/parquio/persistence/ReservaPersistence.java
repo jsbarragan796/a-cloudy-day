@@ -59,6 +59,13 @@ public class ReservaPersistence {
         q = q.setParameter("conductorId", conductorId);
         return q.getResultList();
     }
+    
+    public List<ReservaEntity> findAllForParqueadero(int idparqueadero) {
+        LOGGER.log(Level.INFO, "Consultando todas las reservas de idparqueadero={0}", idparqueadero);
+        TypedQuery q = em.createQuery("select d from ReservaEntity d  where d.idparqueadero = :idparqueadero", ReservaEntity.class);
+        q = q.setParameter("idparqueadero", idparqueadero);
+        return q.getResultList();
+    }
 
     public ReservaEntity create(ReservaEntity entity) {
         LOGGER.info("Creando una reserva nueva");

@@ -19,7 +19,7 @@ public class ReservaDTO {
 
     private Date fecha;
     private double duracion;
-    private int idParqueadero;
+    private int idparqueadero;
 
     /**
      * Constructor por defecto
@@ -27,11 +27,11 @@ public class ReservaDTO {
     public ReservaDTO() {
     }
 
-    public ReservaDTO(Long id, Date fecha, double duracion, int idParqueadero) {
+    public ReservaDTO(Long id, Date fecha, double duracion, int idparqueadero) {
         this.id = id;
         this.fecha = fecha;
         this.duracion = duracion;
-        this.idParqueadero = idParqueadero;
+        this.idparqueadero = idparqueadero;
     }
 
     public ReservaDTO(ReservaEntity entity) {
@@ -39,7 +39,7 @@ public class ReservaDTO {
             this.id = entity.getId();
             this.fecha = entity.getFecha();
             this.duracion = entity.getDuracion();
-            this.idParqueadero = entity.getIdParqueadero();
+            this.idparqueadero = entity.getIdParqueadero();
         }
     }
 
@@ -89,11 +89,11 @@ public class ReservaDTO {
     }
 
     public int getIdParqueadero() {
-        return idParqueadero;
+        return idparqueadero;
     }
 
-    public void setIdParqueadero(int idParqueadero) {
-        this.idParqueadero = idParqueadero;
+    public void setIdParqueadero(int idparqueadero) {
+        this.idparqueadero = idparqueadero;
     }
 
     

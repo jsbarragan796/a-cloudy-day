@@ -28,6 +28,7 @@ import co.edu.uniandes.sisteam.parquio.api.IReservaLogic;
 import co.edu.uniandes.sisteam.parquio.api.IConductorLogic;
 import co.edu.uniandes.sisteam.parquio.entities.ReservaEntity;
 import co.edu.uniandes.sisteam.parquio.entities.ConductorEntity;
+import co.edu.uniandes.sisteam.parquio.entities.ParqueaderoEntity;
 import co.edu.uniandes.sisteam.parquio.persistence.ReservaPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -42,7 +43,7 @@ public class ReservaLogic implements IReservaLogic {
 
     @Inject
     private IConductorLogic conductorLogic;
-
+    
     /**
      * Obtiene la lista de los registros de Reserva que pertenecen a una
      * Conductor.
@@ -55,6 +56,10 @@ public class ReservaLogic implements IReservaLogic {
     public List<ReservaEntity> getReservasConductor(Long conductorid) {
         ConductorEntity conductor = conductorLogic.getConductorId(conductorid);
         return conductor.getReservas();
+    }
+    
+    public List<ReservaEntity> getReservasParqueadero(int parqueaderoid) {
+        return persistence.findAllForParqueadero(parqueaderoid);
     }
 
     /**
