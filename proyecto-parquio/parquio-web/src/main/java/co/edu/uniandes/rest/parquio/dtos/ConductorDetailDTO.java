@@ -22,8 +22,6 @@ public class ConductorDetailDTO extends ConductorDTO {
 
     private List<FavoritoDTO> favoritos = new ArrayList<>();
     
-    private List<ReservaDTO> reservas = new ArrayList<>();
-
     public ConductorDetailDTO() {
         super();
     }
@@ -44,10 +42,7 @@ public class ConductorDetailDTO extends ConductorDTO {
                 this.favoritos.add(new FavoritoDTO(favorito));
             }
             
-             List<ReservaEntity> reservasEntity = entity.getReservas();
-            for (ReservaEntity reserva : reservasEntity) {
-                this.reservas.add(new ReservaDTO(reserva));
-            }
+           
         }
     }
 
@@ -65,12 +60,7 @@ public class ConductorDetailDTO extends ConductorDTO {
         for (FavoritoDTO favorito : favoritos2) {
             entity.getFavoritos().add(favorito.toEntity());
         }
-        
-        List<ReservaDTO> reservas2 = this.reservas;
-        for (ReservaDTO reserva : reservas2) {
-            entity.getReservas().add(reserva.toEntity());
-        }
-
+       
         return entity;
 
     }
@@ -90,17 +80,4 @@ public class ConductorDetailDTO extends ConductorDTO {
     public void setFavoritos(List<FavoritoDTO> favoritos) {
         this.favoritos = favoritos;
     }
-
-    public List<ReservaDTO> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List<ReservaDTO> reservas) {
-        this.reservas = reservas;
-    }
-
-    
-    
-
-
 }

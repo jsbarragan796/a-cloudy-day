@@ -36,21 +36,30 @@ import javax.persistence.Temporal;
 public class ReservaEntity extends BaseEntity implements Serializable {
     
     @ManyToOne
-    private ConductorEntity conductor;
+    private ParqueaderoEntity parqueadero;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;  
     private double duracion;
-    private int idparqueadero;
- 
-    public ConductorEntity getConductor() 
-    {
-        return conductor;
+    private int idConductor;
+
+    public ParqueaderoEntity getParqueadero() {
+        return parqueadero;
     }
 
-    public void setConductor(ConductorEntity conductor) {
-        this.conductor = conductor;
+    public void setParqueadero(ParqueaderoEntity parqueadero) {
+        this.parqueadero = parqueadero;
     }
+
+    public int getIdConductor() {
+        return idConductor;
+    }
+
+    public void setIdConductor(int idConductor) {
+        this.idConductor = idConductor;
+    }
+ 
+   
 
     public Date getFecha() {
         return fecha;
@@ -68,13 +77,4 @@ public class ReservaEntity extends BaseEntity implements Serializable {
     {
         this.duracion = duracion;
     }
-
-    public int getIdParqueadero() {
-        return idparqueadero;
-    }
-
-    public void setIdParqueadero(int idparqueadero) {
-        this.idparqueadero = idparqueadero;
-    }
- 
 }

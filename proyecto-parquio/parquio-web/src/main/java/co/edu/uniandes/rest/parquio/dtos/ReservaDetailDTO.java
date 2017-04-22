@@ -32,7 +32,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ReservaDetailDTO extends ReservaDTO {
 
     @PodamExclude
-    private ConductorDTO conductor;
+    private ParqueaderoDTO parqueadero;
 
     /**
      *
@@ -51,8 +51,8 @@ public class ReservaDetailDTO extends ReservaDTO {
      */
     public ReservaDetailDTO(ReservaEntity entity) {
         super(entity);
-        if (entity.getConductor() != null) {
-            this.conductor = new ConductorDTO(entity.getConductor());
+        if (entity.getParqueadero() != null) {
+            this.parqueadero = new ParqueaderoDTO(entity.getParqueadero());
         }
     }
 
@@ -66,30 +66,30 @@ public class ReservaDetailDTO extends ReservaDTO {
     @Override
     public ReservaEntity toEntity() {
         ReservaEntity entity = super.toEntity();
-        if (this.getConductor() != null) {
-            entity.setConductor(this.getConductor().toEntity());
+        if (this.getParqueadero() != null) {
+            entity.setParqueadero(this.getParqueadero().toEntity());
         }
         return entity;
     }
 
     /**
-     * Obtiene el atributo conductor.
+     * Obtiene el atributo parqueadero.
      *
-     * @return atributo conductor.
+     * @return atributo parqueadero.
      *
      */
-    public ConductorDTO getConductor() {
-        return conductor;
+    public ParqueaderoDTO getParqueadero() {
+        return parqueadero;
     }
 
     /**
-     * Establece el valor del atributo conductor.
+     * Establece el valor del atributo parqueadero.
      *
-     * @param conductor nuevo valor del atributo
+     * @param parqueadero nuevo valor del atributo
      *
      */
-    public void setConductor(ConductorDTO conductor) {
-        this.conductor = conductor;
+    public void setParqueadero(ParqueaderoDTO parqueadero) {
+        this.parqueadero = parqueadero;
     }
 
 }

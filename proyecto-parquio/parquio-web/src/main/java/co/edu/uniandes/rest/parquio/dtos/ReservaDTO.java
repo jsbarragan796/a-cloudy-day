@@ -19,7 +19,7 @@ public class ReservaDTO {
 
     private Date fecha;
     private double duracion;
-    private int idparqueadero;
+    private int idConductor;
 
     /**
      * Constructor por defecto
@@ -27,11 +27,11 @@ public class ReservaDTO {
     public ReservaDTO() {
     }
 
-    public ReservaDTO(Long id, Date fecha, double duracion, int idparqueadero) {
+    public ReservaDTO(Long id, Date fecha, double duracion, int idConductor) {
         this.id = id;
         this.fecha = fecha;
         this.duracion = duracion;
-        this.idparqueadero = idparqueadero;
+        this.idConductor = idConductor;
     }
 
     public ReservaDTO(ReservaEntity entity) {
@@ -39,7 +39,7 @@ public class ReservaDTO {
             this.id = entity.getId();
             this.fecha = entity.getFecha();
             this.duracion = entity.getDuracion();
-            this.idparqueadero = entity.getIdParqueadero();
+            this.idConductor = entity.getIdConductor();
         }
     }
 
@@ -54,7 +54,7 @@ public class ReservaDTO {
         entity.setId(this.getId());
         entity.setFecha(this.getFecha());
         entity.setDuracion(this.getDuracion());
-        entity.setIdParqueadero(this.getIdParqueadero());
+        entity.setIdConductor(this.getIdConductor());
         return entity;
     }
 
@@ -88,12 +88,12 @@ public class ReservaDTO {
         this.duracion = duracion;
     }
 
-    public int getIdParqueadero() {
-        return idparqueadero;
+    public int getIdConductor() {
+        return idConductor;
     }
 
-    public void setIdParqueadero(int idparqueadero) {
-        this.idparqueadero = idparqueadero;
+    public void setIdConductor(int idConductor) {
+        this.idConductor = idConductor;
     }
 
     

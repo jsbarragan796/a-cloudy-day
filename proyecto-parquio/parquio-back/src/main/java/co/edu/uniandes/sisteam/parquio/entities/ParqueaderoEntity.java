@@ -23,13 +23,31 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ParqueaderoEntity extends BaseEntity implements Serializable {
 
-   private String nombre;
-   private int disponibilidad;
-   private int cupos;
-   private String direccion;
-   private double latitud;
-   private double longitud;
+    @PodamExclude
+    @OneToMany(mappedBy = "parqueadero", cascade = CascadeType.ALL)
+    private List<ReservaEntity> reservas = new ArrayList<>();
 
+    private String nombre;
+    private int disponibilidad;
+    private int cupos;
+    private String direccion;
+    private double latitud;
+    private double longitud;
+
+    public List<ReservaEntity> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<ReservaEntity> reservas) {
+        this.reservas = reservas;
+    }
+    
+    
+
+    public void add(ReservaEntity reserva) {
+        this.reservas.add(reserva);
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -77,9 +95,7 @@ public class ParqueaderoEntity extends BaseEntity implements Serializable {
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
-   
-   
-   
-   
-   
-    }
+
+    
+
+}

@@ -25,9 +25,9 @@ package co.edu.uniandes.rest.parquio.resources;
 
 import co.edu.uniandes.rest.parquio.dtos.ReservaDTO;
 import co.edu.uniandes.rest.parquio.dtos.ReservaDetailDTO;
-import co.edu.uniandes.rest.parquio.dtos.ConductorDetailDTO;
+import co.edu.uniandes.rest.parquio.dtos.ParqueaderoDetailDTO;
 import co.edu.uniandes.sisteam.parquio.api.IReservaLogic;
-import co.edu.uniandes.sisteam.parquio.api.IConductorLogic;
+import co.edu.uniandes.sisteam.parquio.api.IParqueaderoLogic;
 import co.edu.uniandes.sisteam.parquio.entities.ReservaEntity;
 import co.edu.uniandes.sisteam.parquio.exceptions.BusinessLogicException;
 import java.util.List;
@@ -48,17 +48,17 @@ import javax.ws.rs.WebApplicationException;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Path("/conductores/{conductorId: \\d+}/reservas")
+@Path("/parqueaderos/{parqueaderoId: \\d+}/reservas")
 public class ReservaResource {
 
     @Inject
     private IReservaLogic reservaLogic;
 
     @Inject
-    private IConductorLogic conductorLogic;
+    private IParqueaderoLogic parqueaderoLogic;
 
-    @PathParam("conductorId")
-    private Long conductorId;
+    @PathParam("parqueaderoId")
+    private Long parqueaderoId;
 
     /**
      * Convierte una lista de ReservaEntity a una lista de
@@ -76,16 +76,16 @@ public class ReservaResource {
         return list;
     }
 
-    public void existsConductor(Long conductorId) {
-        ConductorDetailDTO conductor = new ConductorDetailDTO(conductorLogic.getConductorId(conductorId));
-        if (conductor == null) {
+    public void existsParqueadero(Long parqueaderoId) {
+        ParqueaderoDetailDTO parqueadero = new ParqueaderoDetailDTO(parqueaderoLogic.getParqueaderoId(parqueaderoId));
+        if (parqueadero == null) {
             throw new WebApplicationException(404);
         }
     }
 
     /**
      * Obtiene los datos de los Reservas de una compañía a partir del ID de
-     * la Conductor
+     * la Parqueadero
      *
      *
      * @return Lista de ReservaDetailDTO con los datos del Reserva
@@ -93,16 +93,16 @@ public class ReservaResource {
      *
      */
     @GET
-    public List<ReservaDetailDTO> getReservasConductor() {
-        existsConductor(conductorId);
+    public List<ReservaDetailDTO> getReservasParqueadero() {
+        existsParqueadero(parqueaderoId);
         
-        List<ReservaEntity> reservas = reservaLogic.getReservasConductor(conductorId);
+        List<ReservaEntity> reservas = reservaLogic.getReservasParqueadero(parqueaderoId);
 
         return listEntity2DTO(reservas);
     }
      /**
      * Obtiene los datos de una instancia de Reserva a partir de su ID
-     * asociado a un Conductor
+     * asociado a un Parqueadero
      *
      * @param reservaId Identificador de la instancia a consultar
      * @return Instancia de ReservaDetailDTO con los datos del Reserva
@@ -119,7 +119,7 @@ public class ReservaResource {
     }
 
     /**
-     * Asocia un Reserva existente a un Conductor
+     * Asocia un Reserva existente a un Parqueadero
      *
      * @param dto Objeto de ReservaDetailDTO con los datos nuevos
      * @return Objeto de ReservaDetailDTOcon los datos nuevos y su ID.
@@ -127,8 +127,8 @@ public class ReservaResource {
      */
     @POST
     public ReservaDetailDTO createReserva(ReservaDetailDTO dto) throws BusinessLogicException {
-        existsConductor(conductorId);
-        return new ReservaDetailDTO(reservaLogic.createReserva(conductorId, dto.toEntity()));
+        existsParqueadero(parqueaderoId);
+        return new ReservaDetailDTO(reservaLogic.createReserva(parqueaderoId, dto.toEntity()));
     }
 
     /**
@@ -143,11 +143,11 @@ public class ReservaResource {
     @PUT
     @Path("{reservaId: \\d+}")
     public ReservaDetailDTO updateReserva(@PathParam("reservaId") Long reservaId, ReservaDetailDTO dto) {
-        existsConductor(conductorId);
+        existsParqueadero(parqueaderoId);
         ReservaEntity entity = dto.toEntity();
         entity.setId(reservaId);
         ReservaEntity oldEntity = reservaLogic.getReserva(reservaId);
-        return new ReservaDetailDTO(reservaLogic.updateReserva(conductorId, entity));
+        return new ReservaDetailDTO(reservaLogic.updateReserva(parqueaderoId, entity));
     }
 
     /**
@@ -159,7 +159,7 @@ public class ReservaResource {
     @DELETE
     @Path("{reservaId: \\d+}")
     public void deleteReserva(@PathParam("reservaId") Long reservaId) {
-        existsConductor(conductorId);
+        existsParqueadero(parqueaderoId);
         reservaLogic.deleteReserva(reservaId);
     }
     

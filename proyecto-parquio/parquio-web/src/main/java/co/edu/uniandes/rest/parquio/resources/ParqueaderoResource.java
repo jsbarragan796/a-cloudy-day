@@ -101,32 +101,7 @@ public class ParqueaderoResource {
         return new ParqueaderoDTO(parqueaderoLogic.getParqueaderoId(id));
     }
 
-    @GET
-    @Path("{idparqueadero: \\d+}/reservas")
-    public List<ReservaDetailDTO> getReservasParqueadero(@PathParam("idparqueadero") Long idparqueadero) {
-        existsParqueadero(idparqueadero);
-
-        long foo = idparqueadero;
-        int bar = toIntExact(foo);
-        
-        List<ReservaEntity> reservas = reservaLogic.getReservasParqueadero(bar);
-        return listEntity2DTOReservas(reservas);
-    }
-
-    public void existsParqueadero(Long idparqueadero) {
-        ParqueaderoDTO parqueadero = new ParqueaderoDTO(parqueaderoLogic.getParqueaderoId(idparqueadero));
-        if (parqueadero == null) {
-            throw new WebApplicationException(404);
-        }
-    }
-
-    private List<ReservaDetailDTO> listEntity2DTOReservas(List<ReservaEntity> entityList) {
-        List<ReservaDetailDTO> list = new ArrayList<>();
-        for (ReservaEntity entity : entityList) {
-            list.add(new ReservaDetailDTO(entity));
-        }
-        return list;
-    }
+   
 
     /**
      * Se encarga de crear un Parqueadero en la base de datos

@@ -26,9 +26,13 @@ package co.edu.uniandes.rest.parquio.resources;
 
 import co.edu.uniandes.rest.parquio.dtos.ConductorDTO;
 import co.edu.uniandes.rest.parquio.dtos.ConductorDetailDTO;
+import co.edu.uniandes.rest.parquio.dtos.ReservaDetailDTO;
 import co.edu.uniandes.sisteam.parquio.api.IConductorLogic;
+import co.edu.uniandes.sisteam.parquio.api.IReservaLogic;
 import co.edu.uniandes.sisteam.parquio.entities.ConductorEntity;
+import co.edu.uniandes.sisteam.parquio.entities.ReservaEntity;
 import co.edu.uniandes.sisteam.parquio.exceptions.BusinessLogicException;
+import static java.lang.Math.toIntExact;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -44,6 +48,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import javax.inject.Inject;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 
 @Path("/conductores")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -52,6 +57,9 @@ public class ConductorResource {
 
     @Inject
     private IConductorLogic conductorLogic;
+    
+    @Inject
+    private IReservaLogic reservaLogic;
 
     /**
      * Convierte una lista de ConductorEntity a una lista de ConductorDTO.
@@ -92,6 +100,33 @@ public class ConductorResource {
     @Path("{id: \\d+}")
     public ConductorDetailDTO getConductor(@PathParam("id") Long id) {
         return new ConductorDetailDTO(conductorLogic.getConductorId(id));
+    }
+    
+    @GET
+    @Path("{idConductor: \\d+}/reservas")
+    public List<ReservaDetailDTO> getReservasConductor(@PathParam("idConductor") Long idConductor) {
+        existsConductor(idConductor);
+
+        long foo = idConductor;
+        int bar = toIntExact(foo);
+        
+        List<ReservaEntity> reservas = reservaLogic.getReservasConductor(bar);
+        return listEntity2DTOReservas(reservas);
+    }
+
+    public void existsConductor(Long idConductor) {
+        ConductorDTO conductor = new ConductorDTO(conductorLogic.getConductorId(idConductor));
+        if (conductor == null) {
+            throw new WebApplicationException(404);
+        }
+    }
+
+    private List<ReservaDetailDTO> listEntity2DTOReservas(List<ReservaEntity> entityList) {
+        List<ReservaDetailDTO> list = new ArrayList<>();
+        for (ReservaEntity entity : entityList) {
+            list.add(new ReservaDetailDTO(entity));
+        }
+        return list;
     }
 
     /**

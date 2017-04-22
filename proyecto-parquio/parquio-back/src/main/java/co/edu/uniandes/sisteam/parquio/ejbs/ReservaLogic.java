@@ -25,9 +25,10 @@ package co.edu.uniandes.sisteam.parquio.ejbs;
 
 
 import co.edu.uniandes.sisteam.parquio.api.IReservaLogic;
-import co.edu.uniandes.sisteam.parquio.api.IConductorLogic;
+import co.edu.uniandes.sisteam.parquio.api.IParqueaderoLogic;
+import co.edu.uniandes.sisteam.parquio.api.IParqueaderoLogic;
 import co.edu.uniandes.sisteam.parquio.entities.ReservaEntity;
-import co.edu.uniandes.sisteam.parquio.entities.ConductorEntity;
+import co.edu.uniandes.sisteam.parquio.entities.ParqueaderoEntity;
 import co.edu.uniandes.sisteam.parquio.entities.ParqueaderoEntity;
 import co.edu.uniandes.sisteam.parquio.persistence.ReservaPersistence;
 import java.util.List;
@@ -42,24 +43,24 @@ public class ReservaLogic implements IReservaLogic {
     private ReservaPersistence persistence;
 
     @Inject
-    private IConductorLogic conductorLogic;
+    private IParqueaderoLogic parqueaderoLogic;
     
     /**
      * Obtiene la lista de los registros de Reserva que pertenecen a una
-     * Conductor.
+     * Parqueadero.
      *
-     * @param conductorid id de la Conductor la cual es padre de las Reservas.
+     * @param parqueaderoid id de la Parqueadero la cual es padre de las Reservas.
      * @return Colección de objetos de ReservaEntity.
      *
      */
-    @Override
-    public List<ReservaEntity> getReservasConductor(Long conductorid) {
-        ConductorEntity conductor = conductorLogic.getConductorId(conductorid);
-        return conductor.getReservas();
+    public List<ReservaEntity> getReservasParqueadero(Long parqueaderoid) {
+        ParqueaderoEntity parqueadero = parqueaderoLogic.getParqueaderoId(parqueaderoid);
+        return parqueadero.getReservas();
     }
     
-    public List<ReservaEntity> getReservasParqueadero(int parqueaderoid) {
-        return persistence.findAllForParqueadero(parqueaderoid);
+    
+    public List<ReservaEntity> getReservasConductor(int idConductor) {
+        return persistence.findAllForConductor(idConductor);
     }
 
     /**
@@ -83,15 +84,15 @@ public class ReservaLogic implements IReservaLogic {
      * Se encarga de crear una Reserva en la base de datos.
      *
      * @param entity Objeto de ReservaEntity con los datos nuevos
-     * @param conductorid id de la Conductor la cual sera padre de la nueva Reserva.
+     * @param parqueaderoid id de la Parqueadero la cual sera padre de la nueva Reserva.
      * @return Objeto de ReservaEntity con los datos nuevos y su ID.
      *
      */
     @Override
-    public ReservaEntity createReserva(Long conductorid, ReservaEntity entity) {
-        ConductorEntity conductor = conductorLogic.getConductorId(conductorid);
-        conductor.add(entity);
-        entity.setConductor(conductor);
+    public ReservaEntity createReserva(Long parqueaderoid, ReservaEntity entity) {
+        ParqueaderoEntity parqueadero = parqueaderoLogic.getParqueaderoId(parqueaderoid);
+        parqueadero.add(entity);
+        entity.setParqueadero(parqueadero);
         entity = persistence.create(entity);
         return entity;
     }
@@ -100,15 +101,15 @@ public class ReservaLogic implements IReservaLogic {
      * Actualiza la información de una instancia de Reserva.
      *
      * @param entity Instancia de ReservaEntity con los nuevos datos.
-     * @param conductorid id de la Conductor la  cual sera padre de la Reserva
+     * @param parqueaderoid id de la Parqueadero la  cual sera padre de la Reserva
      * actualizada.
      * @return Instancia de ReservaEntity con los datos actualizados.
      *
      */
     @Override
-    public ReservaEntity updateReserva(Long conductorid, ReservaEntity entity) {
-        ConductorEntity conductor = conductorLogic.getConductorId(conductorid);
-        entity.setConductor(conductor);
+    public ReservaEntity updateReserva(Long parqueaderoid, ReservaEntity entity) {
+        ParqueaderoEntity parqueadero = parqueaderoLogic.getParqueaderoId(parqueaderoid);
+        entity.setParqueadero(parqueadero);
         return persistence.update(entity);
     }
 
@@ -116,7 +117,7 @@ public class ReservaLogic implements IReservaLogic {
      * Elimina una instancia de Reserva de la base de datos.
      *
      * @param id Identificador de la instancia a eliminar.
-     * @param conductorid id de la Conductor la cual es padre de la Reserva.
+     * @param parqueaderoid id de la Parqueadero la cual es padre de la Reserva.
      *
      */
     @Override

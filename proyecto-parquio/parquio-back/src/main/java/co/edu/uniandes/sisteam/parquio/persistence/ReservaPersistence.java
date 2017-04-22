@@ -53,17 +53,17 @@ public class ReservaPersistence {
         return q.getResultList();
     }
 
-    public List<ReservaEntity> findAllForConductor(Long conductorId) {
-        LOGGER.log(Level.INFO, "Consultando todas las reservas de conductor id={0}", conductorId);
-        TypedQuery q = em.createQuery("select d from ReservaEntity d  where d.conductor.id = :conductorId", ReservaEntity.class);
-        q = q.setParameter("conductorId", conductorId);
+    public List<ReservaEntity> findAllForConductor(int idConductor) {
+        LOGGER.log(Level.INFO, "Consultando todas las reservas de conductor id={0}", idConductor);
+        TypedQuery q = em.createQuery("select d from ReservaEntity d  where d.idConductor = :idConductor", ReservaEntity.class);
+        q = q.setParameter("idConductor", idConductor);
         return q.getResultList();
     }
     
-    public List<ReservaEntity> findAllForParqueadero(int idparqueadero) {
-        LOGGER.log(Level.INFO, "Consultando todas las reservas de idparqueadero={0}", idparqueadero);
-        TypedQuery q = em.createQuery("select d from ReservaEntity d  where d.idparqueadero = :idparqueadero", ReservaEntity.class);
-        q = q.setParameter("idparqueadero", idparqueadero);
+    public List<ReservaEntity> findAllForParqueadero(Long parqueaderoId) {
+        LOGGER.log(Level.INFO, "Consultando todas las reservas de parqueadero id={0}", parqueaderoId);
+        TypedQuery q = em.createQuery("select d from ReservaEntity d  where d.parqueadero.id = :parqueaderoId", ReservaEntity.class);
+        q = q.setParameter("parqueaderoId", parqueaderoId);
         return q.getResultList();
     }
 
