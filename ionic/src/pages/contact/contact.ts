@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {DetVehiculo} from '../det-vehiculo/det-vehiculo';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -13,11 +14,17 @@ export class ContactPage {
 
   usuario:any;
 
-  constructor(public navCtrl: NavController,params: NavParams) {
+  constructor(public navCtrl: NavController,pgarams: NavParams,public storage: Storage) {
 
-    if(params.data!==undefined){
-      this.usuario =params.data;
-    }
+  }
+
+  ionViewDidLoad(){
+
+      this.usuario =this.storage.get('usuario').then((val) => {
+         console.log('en vista contacto', val);
+         this.usuario=val;
+       })
+
 
 
   }

@@ -1,3 +1,4 @@
+
 <!--
 Generated template for the InicioPerfil page.
 
@@ -21,10 +22,15 @@ Ionic pages and navigation.
 
       <ion-item>
         <ion-label >Usuario</ion-label>
-        <ion-input type="text" value="{{usuario.usuarioName}}" [formControl]="authForm.controls['usuarioName']" ></ion-input>
+        <ion-input type="text" value="" [formControl]="authForm.controls['usuarioName']" ></ion-input>
+      </ion-item><br/>
+      <div class="error-box" *ngIf="authForm.controls['usuarioName'].hasError('required') && authForm.controls['usuarioName'].touched">* Usuario requerido!</div>
+      <ion-item>
+        <ion-label >Contraseña</ion-label>
+        <ion-input type="password" value="" [formControl]="authForm.controls['usuarioPass']" ></ion-input>
       </ion-item><br/>
 
-      <div class="error-box" *ngIf="authForm.controls['usuarioName'].hasError('required') && authForm.controls['usuarioName'].touched">* Usuario requerido!</div>
+      <div class="error-box" *ngIf="authForm.controls['usuarioPass'].hasError('required') && authForm.controls['usuarioPass'].touched">* Usuario requerido!</div>
     </form>
 
     <button type="submit" ion-button full [disabled]="!authForm.valid" (click)="submitForm()">Iniciar sesión</button>

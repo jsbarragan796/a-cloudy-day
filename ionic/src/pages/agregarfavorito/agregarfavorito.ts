@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { Platform, ViewController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 /**
 * Generated class for the DetalleReserva page.
@@ -16,7 +17,7 @@ import { Platform, ViewController } from 'ionic-angular';
 export class AgregarFavorito {
 
   favorito={nombre:'',coords:{}};
-  constructor(public platform: Platform, public params: NavParams,public viewCtrl: ViewController) {
+  constructor(public platform: Platform, public params: NavParams,public viewCtrl: ViewController,public storage: Storage ) {
     console.log(params);
     this.favorito.coords=params.get('coords');
     this.favorito.nombre=params.get('nombre');
@@ -30,6 +31,11 @@ export class AgregarFavorito {
   }
   submitForm():void{
     let data = { favorito:this.favorito };
+    this.storage.get('usuario').then((val) => {
+      console.log('Your age is', val);
+      val.favoritos.push(this.favorito)
+      this.storage.set('usuario',val)
+    })
     console.log('Form submited!')
     this.viewCtrl.dismiss(data);
   }

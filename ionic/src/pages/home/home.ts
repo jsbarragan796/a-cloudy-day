@@ -8,6 +8,7 @@ import { DetalleReserva } from '../detalle-reserva/detalle-reserva';
 import {AgregarFavorito} from '../agregarfavorito/agregarfavorito';
 import {InfoReserva} from '../inforeserva/inforeserva';
 import { ModalController, Platform } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -23,19 +24,22 @@ export class HomePage {
 
 
   constructor(public loadingCtrl: LoadingController,private platform: Platform, private geolocation: Geolocation,
-    public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController) {
-      this.usuario=navParams.data.usuario;
-      if(navParams.data.posicionFav===undefined&&this.usuario!==undefined){
+    public navCtrl: NavController, public navParams: NavParams,public storage: Storage,public modalCtrl: ModalController) {
 
-        this.locateUser();
-      }
-      else if(this.usuario!==undefined) {
-        var coors=navParams.data.posicionFav;
-        this.locateUserFavorito(coors);
-      }
-      else {
-        this.navCtrl.setRoot(InicioPerfil);
-      }
+      storage.get('usuario').then((val) => {
+        console.log('en home ', val);
+        this.usuario= val;
+        if(navParams.data.posicionFav===undefined&&this.usuario!==undefined){
+          this.locateUser();
+        }
+        else if(this.usuario!==undefined) {
+          var coors=navParams.data.posicionFav;
+          this.locateUserFavorito(coors);
+        }
+        else {
+          this.navCtrl.setRoot(InicioPerfil);
+        }
+      })
 
     }
 
@@ -57,10 +61,7 @@ export class HomePage {
 
 
     ionViewDidLoad(){
-      console.log("en home!!");
-      console.log(this.usuario);
-      console.log("en home map!!");
-      console.log(this.map);
+    
     }
 
 

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {  NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import{ TabsPage} from "../tabs/tabs";
-import { Geolocation } from '@ionic-native/geolocation';
+import { Platform, ViewController } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
+
 
 /**
 * Generated class for the InicioPerfil page.
@@ -31,21 +32,21 @@ export class InicioPerfil {
 authForm : FormGroup;
 
 
-constructor(public navCtrl: NavController,fb: FormBuilder,private geolocation: Geolocation) {
+constructor(public navCtrl: NavController,fb: FormBuilder,public viewCtrl: ViewController) {
   this.authForm = fb.group({
-    'usuarioName' : [null, Validators.compose([Validators.required])]
+    'usuarioName' : [null, Validators.compose([Validators.required])],
+    'usuarioPass' : [null, Validators.compose([Validators.required])]
   });
-  var ee= geolocation.getCurrentPosition().then((pos) => {
-    console.log(pos);
-  }).catch((error)=>console.log("error en la geolocation"));
 }
 
 
 
 
 submitForm():void{
+  console.log("inicio de sesion");
+    this.viewCtrl.dismiss(this.authForm.value);
   //this.navCtrl.setRoot(HomePage, {posicion: posicion});
-  this.navCtrl.setRoot(TabsPage, {usuario: this.usuario});
+  //  this.navCtrl.setRoot(TabsPage, {usuario: this.usuario});
 
 }
 
