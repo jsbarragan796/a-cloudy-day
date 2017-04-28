@@ -19,7 +19,7 @@ export class DetVehiculo {
       this.vehiculo =navParams.get('vehiculo');
     }
     this.authForm = fb.group({
-      'tipo' : this.vehiculo.tipo,
+      'tipo' : [null, Validators.compose([Validators.required])],
       'placa': [null, Validators.compose([Validators.required])],
     })
   }
