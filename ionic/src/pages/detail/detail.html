@@ -8,10 +8,6 @@ Ionic pages and navigation.
 
   <ion-navbar>
     <ion-title>Ayuda</ion-title>
-
-    <ion-buttons end>
-      <button type="submit" ion-button full [disabled]="!authForm.valid" (click)="submitForm()">Guardar</button>
-    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -19,24 +15,23 @@ Ionic pages and navigation.
 
 <ion-content padding>
 
-  <form [formGroup]="authForm" (ngSubmit)="submitForm(authForm.value)">
+  <ion-card>
+    <ion-card-header>
+      Contactanos
+    </ion-card-header>
 
-    <ion-item>
-      <ion-label >Nombres</ion-label>
-      <ion-input type="text" value="{{usuario.nombres}}" [formControl]="authForm.controls['nombres']" ></ion-input>
-    </ion-item><br/>
+    <ion-card-content>
+      <ion-item>
+        <h3><strong>Telefono : </strong>305-555-7632</h3>
+      </ion-item>
+      <ion-item>
 
-    <div class="error-box" *ngIf="authForm.controls['nombres'].hasError('required') && authForm.controls['nombres'].touched">* Nombres requeridos!</div>
+          <img src="img/logoParquio.png">
+  
+      </ion-item>
 
-
-    <ion-item>
-      <ion-label >Apellidos</ion-label>
-      <ion-input type="text" value="{{usuario.apellidos}}" [formControl]="authForm.controls['apellidos']" ></ion-input>
-    </ion-item><br/>
-
-    <div class="error-box" *ngIf="authForm.controls['apellidos'].hasError('required') && authForm.controls['apellidos'].touched">* Apellidos requeridos!</div>
-
-  </form>
+    </ion-card-content>
+  </ion-card>
 
 
 </ion-content>

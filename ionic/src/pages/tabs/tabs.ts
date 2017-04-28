@@ -5,6 +5,7 @@ import { HomePage } from '../home/home';
 import { InicioPerfil } from '../inicio-perfil/inicio-perfil';
 import { Storage } from '@ionic/storage';
 import { ModalController} from 'ionic-angular';
+import {DetailPage} from '../detail/detail'
 
 
 @Component({
@@ -14,7 +15,7 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = ContactPage;
-  tab3Root = ContactPage;
+  tab3Root = DetailPage;
   usuario:any;
 //  usuarioTab1:any;
 
