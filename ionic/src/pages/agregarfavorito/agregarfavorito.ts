@@ -16,9 +16,9 @@ import { Storage } from '@ionic/storage';
 })
 export class AgregarFavorito {
 
-  favorito={nombre:'',coords:{}};
+  favorito={nombre:'',posicion:{coords:{}}};
   constructor(public params: NavParams,public viewCtrl: ViewController,public storage: Storage ) {
-    this.favorito.coords=params.get('coords');
+    this.favorito.posicion.coords=params.get('coords');
     this.favorito.nombre=params.get('nombre');
   }
 
