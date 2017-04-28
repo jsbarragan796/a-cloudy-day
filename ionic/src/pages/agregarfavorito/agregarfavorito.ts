@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
-import { Platform, ViewController } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 /**
@@ -17,13 +17,10 @@ import { Storage } from '@ionic/storage';
 export class AgregarFavorito {
 
   favorito={nombre:'',coords:{}};
-  constructor(public platform: Platform, public params: NavParams,public viewCtrl: ViewController,public storage: Storage ) {
-    console.log(params);
+  constructor(public params: NavParams,public viewCtrl: ViewController,public storage: Storage ) {
     this.favorito.coords=params.get('coords');
     this.favorito.nombre=params.get('nombre');
-
   }
-
 
   dismiss() {
     let data = { };

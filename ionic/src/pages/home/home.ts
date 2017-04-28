@@ -3,7 +3,6 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { LoadingController } from 'ionic-angular';
 import { NavController, NavParams } from 'ionic-angular';
 import { AboutPage} from '../about/about';
-import { InicioPerfil } from '../inicio-perfil/inicio-perfil';
 import { DetalleReserva } from '../detalle-reserva/detalle-reserva';
 import {AgregarFavorito} from '../agregarfavorito/agregarfavorito';
 import {InfoReserva} from '../inforeserva/inforeserva';
@@ -21,32 +20,16 @@ export class HomePage {
   posicion:any;
   usuario:any;
 
-
-
   constructor(public loadingCtrl: LoadingController,private platform: Platform, private geolocation: Geolocation,
     public navCtrl: NavController, public navParams: NavParams,public storage: Storage,public modalCtrl: ModalController) {
-
-      storage.get('usuario').then((val) => {
+      this.storage.get('usuario').then((val) => {
         console.log('en home ', val);
         this.usuario= val;
-        if(navParams.data.posicionFav===undefined&&this.usuario!==undefined){
-          this.locateUser();
-        }
-        else if(this.usuario!==undefined) {
-          var coors=navParams.data.posicionFav;
-          this.locateUserFavorito(coors);
-        }
-        else {
-          this.navCtrl.setRoot(InicioPerfil);
-        }
       })
 
     }
 
-
-
     presentProfileModal(parqueadero) {
-
       let reservaModal = this.modalCtrl.create(DetalleReserva, { parqueadero: parqueadero});
       reservaModal.onDidDismiss(data => {
         console.log(data);
@@ -54,16 +37,20 @@ export class HomePage {
           this.navCtrl.push(InfoReserva, {usuario:this.usuario,parqueadero:parqueadero});
         }
       });
-
       reservaModal.present();
     }
 
-
-
     ionViewDidLoad(){
-    
+
+      this.locateUser();
     }
 
+    ionViewWillEnter(){
+      this.storage.get('usuario').then((val) => {
+        console.log('en home ', val);
+        this.usuario= val;
+      })
+    }
 
     presentLoading(duracion) {
       let loader = this.loadingCtrl.create({
@@ -74,8 +61,8 @@ export class HomePage {
     }
 
     locateUser(){
-      this.presentLoading(3000);
 
+      this.presentLoading(2000);
       this.geolocation.getCurrentPosition().then((pos) => {
         let latLng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
         this.posicion=pos;
@@ -86,7 +73,7 @@ export class HomePage {
       });
     }
 
-    //boton azulllll
+    //boton azul
     locateUserBoton(){
       console.log("boton azul");
       this.geolocation.getCurrentPosition().then((pos) => {
@@ -100,22 +87,32 @@ export class HomePage {
 
     //boton favoritos
     favUserBoton(){
-      this.navCtrl.push(AboutPage, {usuario:this.usuario});
+      let favoritoListaModal = this.modalCtrl.create(AboutPage, { favoritos:this.usuario.favoritos});
+      favoritoListaModal.onDidDismiss(data => {
+        console.log(data.coords);
+        if(data.coords!==undefined){
+          console.log("ir a lugar favorito");
+          this.locateUserFavorito(data);
+        }
+        else{
+          console.log("no ir a favorito");
+        }
+      });
+      favoritoListaModal.present();
+      //      this.navCtrl.push(AboutPage, {usuario:this.usuario});
     }
 
 
     locateUserFavorito(coordenadas){
       this.presentLoading(1000);
-      this.geolocation.getCurrentPosition().then((pos) => {
-        let latLng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
-        this.map= this.initMap(coordenadas.coords);
-        this.insertarBusqueda(this.map,this);
-        this.insertarParqueaderos(this.map,latLng);
-        this.insertarFavoritoMapa(this.map,coordenadas.coords);
-        this.map.panTo(latLng);
-        this.map.setZoom(16);
-
-      });
+      let latLng = new google.maps.LatLng(coordenadas.coords.latitude,coordenadas.coords.longitude);
+      console.log(latLng);
+      this.map=this.initMap(coordenadas);
+      this.insertarFavoritoMapa(this.map,latLng);
+      this.insertarParqueaderos(this.map, latLng );
+      this.insertarBusqueda(this.map,this);
+      this.map.panTo(latLng);
+      this.map.setZoom(16);
     }
 
     agregarFav(coord,namespace){
@@ -221,12 +218,30 @@ export class HomePage {
       var parqueaderos = [
         {id:1,nombre:'La bendicion',lat:4.600589044444201,long:-74.06797,precio:85,cupos:1},
         {id:2,nombre:'La Alegria',lat:4.601228026690072,long:-74.067970,precio:45,cupos:6},
-        {id:3,nombre:'Ricos y famosos',lat:4.60405,long:-74.0657,precio:85,cupos:40},
+        {id:3,nombre:'Ricos y famosos',lat:4.60405,long:-74.0657,precio:85,cupos:15},
         {id:4,nombre:'Globalizacion',lat: 4.6036,long:-74.066,precio:79,cupos:34},
         {id:5,nombre:'La loma',lat:4.604893,long:-74.065,precio:89,cupos:132}
       ];
-      var image = {
+      var imageR = {
         url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+        // This marker is 20 pixels wide by 32 pixels high.
+        size: new google.maps.Size(50, 50),
+        // The origin for this image is (0, 0).
+        origin: new google.maps.Point(0, 0),
+        // The anchor for this image is the base of the flagpole at (0, 32).
+        anchor: new google.maps.Point(17, 32),
+      };
+      var imageY = {
+        url: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+        // This marker is 20 pixels wide by 32 pixels high.
+        size: new google.maps.Size(50, 50),
+        // The origin for this image is (0, 0).
+        origin: new google.maps.Point(0, 0),
+        // The anchor for this image is the base of the flagpole at (0, 32).
+        anchor: new google.maps.Point(17, 32),
+      };
+      var imageG = {
+        url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
         // This marker is 20 pixels wide by 32 pixels high.
         size: new google.maps.Size(50, 50),
         // The origin for this image is (0, 0).
@@ -239,19 +254,26 @@ export class HomePage {
       for (var i = 0; i < parqueaderos.length; i++) {
         (function(parqueadero,that){
           var lg = new google.maps.LatLng(Number(parqueadero.lat),Number(parqueadero.long));
-          var contenidoString = '<div>'+
-          parqueadero.cupos+' cupos'+
-          '</div>';
+      //    var contenidoString = '<div>'+
+    //      parqueadero.cupos+' cupos'+
+    //      '</div>';
 
-          var infowindow = new google.maps.InfoWindow({
-            content: contenidoString
-          });
+        //  var infowindow = new google.maps.InfoWindow({
+      //      content: contenidoString
+      //    });
+
           var marker = new google.maps.Marker({
             position: lg,
-            map: map,
-            icon: image
+            map: map
           });
-          infowindow.open(map, marker);
+          if (parqueadero.cupos<11){
+            marker.setIcon(imageR)
+          }else if(parqueadero.cupos<20){
+            marker.setIcon(imageY)
+          }else{
+            marker.setIcon(imageG)
+          }
+          //  infowindow.open(map, marker);
           marker.addListener('click', function() {
             that.presentProfileModal(parqueadero);
           });
@@ -263,7 +285,7 @@ export class HomePage {
 
     }
     ///
-    insertarFavoritoMapa(map,posicionu){
+    insertarFavoritoMapa(map,latLng){
 
       var image = {
         url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
@@ -274,7 +296,7 @@ export class HomePage {
       };
 
       //
-      var lg = new google.maps.LatLng(posicionu.coords.latitude,posicionu.coords.longitude);
+      var lg = latLng;
       var marker = new google.maps.Marker({
         position: lg,
         map: map,

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams } from 'ionic-angular';
+import {NavController} from 'ionic-angular';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
 import { InicioPerfil } from '../inicio-perfil/inicio-perfil';
 import { Storage } from '@ionic/storage';
-import { ModalController, Platform } from 'ionic-angular';
+import { ModalController} from 'ionic-angular';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class TabsPage {
   usuario:any;
 //  usuarioTab1:any;
 
-  constructor(public params: NavParams,  public navCtrl: NavController,public storage: Storage,public modalCtrl: ModalController ) {
+  constructor(public navCtrl: NavController,public storage: Storage,public modalCtrl: ModalController ) {
 
   }
 

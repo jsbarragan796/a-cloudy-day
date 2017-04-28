@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 
-
 @Component({
   selector: 'page-det-vehiculo',
   templateUrl: 'det-vehiculo.html',
