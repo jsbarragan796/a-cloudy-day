@@ -6,7 +6,7 @@ import { AboutPage} from '../about/about';
 import { DetalleReserva } from '../detalle-reserva/detalle-reserva';
 import {AgregarFavorito} from '../agregarfavorito/agregarfavorito';
 import {InfoReserva} from '../inforeserva/inforeserva';
-import { ModalController, Platform } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 @Component({
   selector: 'page-home',
@@ -20,12 +20,8 @@ export class HomePage {
   posicion:any;
   usuario:any;
 
-  constructor(public loadingCtrl: LoadingController,private platform: Platform, private geolocation: Geolocation,
+  constructor(public loadingCtrl: LoadingController, private geolocation: Geolocation,
     public navCtrl: NavController, public navParams: NavParams,public storage: Storage,public modalCtrl: ModalController) {
-      this.storage.get('usuario').then((val) => {
-        console.log('en home ', val);
-        this.usuario= val;
-      })
 
     }
 
@@ -46,6 +42,10 @@ export class HomePage {
     }
 
     ionViewWillEnter(){
+      this.traerUsuario();
+    }
+
+    traerUsuario(){
       this.storage.get('usuario').then((val) => {
         console.log('en home ', val);
         this.usuario= val;
@@ -61,7 +61,6 @@ export class HomePage {
     }
 
     locateUser(){
-
       this.presentLoading(2000);
       this.geolocation.getCurrentPosition().then((pos) => {
         let latLng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
@@ -93,13 +92,14 @@ export class HomePage {
         if(data.coords!==undefined){
           console.log("ir a lugar favorito");
           this.locateUserFavorito(data);
+          this.traerUsuario();
         }
         else{
           console.log("no ir a favorito");
         }
       });
       favoritoListaModal.present();
-      //      this.navCtrl.push(AboutPage, {usuario:this.usuario});
+
     }
 
 
@@ -123,6 +123,7 @@ export class HomePage {
         if(data.favorito!==undefined){
           console.log("agregar");
           console.log(data);
+          this.traerUsuario();
         }
         else{
           console.log("no agregar agregar");
@@ -254,13 +255,13 @@ export class HomePage {
       for (var i = 0; i < parqueaderos.length; i++) {
         (function(parqueadero,that){
           var lg = new google.maps.LatLng(Number(parqueadero.lat),Number(parqueadero.long));
-      //    var contenidoString = '<div>'+
-    //      parqueadero.cupos+' cupos'+
-    //      '</div>';
+          //    var contenidoString = '<div>'+
+          //      parqueadero.cupos+' cupos'+
+          //      '</div>';
 
-        //  var infowindow = new google.maps.InfoWindow({
-      //      content: contenidoString
-      //    });
+          //  var infowindow = new google.maps.InfoWindow({
+          //      content: contenidoString
+          //    });
 
           var marker = new google.maps.Marker({
             position: lg,
