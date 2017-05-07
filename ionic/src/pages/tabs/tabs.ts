@@ -17,10 +17,18 @@ export class TabsPage {
   tab2Root = ContactPage;
   tab3Root = DetailPage;
   usuario:any;
-//  usuarioTab1:any;
-
   constructor(public navCtrl: NavController,public storage: Storage,public modalCtrl: ModalController ) {
 
+    this.usuario={usuarioName:'jusebast',nombres:'Juan Sebastian',
+      apellidos:'Barragan Jeronimo',
+      vehiculos:[{tipo:'Camioneta',
+      placa:'ZYW 000'},{tipo:'Camioneta',
+      placa:'ZAA 000'}],
+      favoritos:[{nombre:'La universidad',posicion:{coords:{latitude:4.60836,longitude:-74.0668845}}},
+      {nombre:'Donde pacho',posicion:{coords:{latitude:4.6036,longitude:-74.0668845}}},
+      {nombre:'Usaquen',posicion:{coords:{latitude:4.60836,longitude:-74.0668845}}},
+      {nombre:'Tía Olga',posicion:{coords:{latitude:4.60836,longitude:-74.0668845}}}]
+       };
   }
 
   ionViewDidLoad(){

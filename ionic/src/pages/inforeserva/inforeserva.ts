@@ -20,10 +20,9 @@ export class InfoReserva {
   }
 
   irMapa(){
-
     var usuarioTab1={usuario:this.usuario};
     console.log(usuarioTab1);
-    this.navCtrl.setRoot(TabsPage, {usuarioTab1:usuarioTab1 });
+    this.navCtrl.setRoot(TabsPage);
   }
 
 

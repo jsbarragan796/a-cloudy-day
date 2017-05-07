@@ -217,11 +217,11 @@ export class HomePage {
     insertarParqueaderos(map, latLng ){
       let termino=true;
       var parqueaderos = [
-        {id:1,nombre:'La bendicion',lat:4.600589044444201,long:-74.06797,precio:85,cupos:1},
-        {id:2,nombre:'La Alegria',lat:4.601228026690072,long:-74.067970,precio:45,cupos:6},
-        {id:3,nombre:'Ricos y famosos',lat:4.60405,long:-74.0657,precio:85,cupos:15},
-        {id:4,nombre:'Globalizacion',lat: 4.6036,long:-74.066,precio:79,cupos:34},
-        {id:5,nombre:'La loma',lat:4.604893,long:-74.065,precio:89,cupos:132}
+        {id:1,nombre:'La bendicion',lat:4.600589044444201,long:-74.06797,precio:85,cupos:1,direccion:'Cr 28# 19-2'},
+        {id:2,nombre:'La Alegria',lat:4.601228026690072,long:-74.067970,precio:45,cupos:6,direccion:'Cr 28# 19-2'},
+        {id:3,nombre:'Ricos y famosos',lat:4.60405,long:-74.0657,precio:85,cupos:15,direccion:'Cr 28# 19-2'},
+        {id:4,nombre:'Globalizacion',lat: 4.6036,long:-74.066,precio:79,cupos:0,direccion:'Cr 28# 19-2'},
+        {id:5,nombre:'La loma',lat:4.604893,long:-74.065,precio:89,cupos:0,direccion:'Cr 28# 19-2'} 
       ];
       var imageR = {
         url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
@@ -255,21 +255,14 @@ export class HomePage {
       for (var i = 0; i < parqueaderos.length; i++) {
         (function(parqueadero,that){
           var lg = new google.maps.LatLng(Number(parqueadero.lat),Number(parqueadero.long));
-          //    var contenidoString = '<div>'+
-          //      parqueadero.cupos+' cupos'+
-          //      '</div>';
-
-          //  var infowindow = new google.maps.InfoWindow({
-          //      content: contenidoString
-          //    });
 
           var marker = new google.maps.Marker({
             position: lg,
             map: map
           });
-          if (parqueadero.cupos<11){
+          if (parqueadero.cupos==0){
             marker.setIcon(imageR)
-          }else if(parqueadero.cupos<20){
+          }else if(parqueadero.cupos<10){
             marker.setIcon(imageY)
           }else{
             marker.setIcon(imageG)
