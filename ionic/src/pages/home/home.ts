@@ -22,7 +22,7 @@ export class HomePage {
 
   constructor(public loadingCtrl: LoadingController, private geolocation: Geolocation,
     public navCtrl: NavController, public navParams: NavParams,public storage: Storage,public modalCtrl: ModalController) {
-
+      this.traerUsuario();
     }
 
     presentProfileModal(parqueadero) {
@@ -37,19 +37,14 @@ export class HomePage {
     }
 
     ionViewDidLoad(){
-
       this.locateUser();
-    }
-
-    ionViewWillEnter(){
-      this.traerUsuario();
     }
 
     traerUsuario(){
       this.storage.get('usuario').then((val) => {
         console.log('en home ', val);
         this.usuario= val;
-      })
+      }).catch((errr)=>{console.log('no deberia paar por ava')})
     }
 
     presentLoading(duracion) {
@@ -221,7 +216,7 @@ export class HomePage {
         {id:2,nombre:'La Alegria',lat:4.601228026690072,long:-74.067970,precio:45,cupos:6,direccion:'Cr 28# 19-2'},
         {id:3,nombre:'Ricos y famosos',lat:4.60405,long:-74.0657,precio:85,cupos:15,direccion:'Cr 28# 19-2'},
         {id:4,nombre:'Globalizacion',lat: 4.6036,long:-74.066,precio:79,cupos:0,direccion:'Cr 28# 19-2'},
-        {id:5,nombre:'La loma',lat:4.604893,long:-74.065,precio:89,cupos:0,direccion:'Cr 28# 19-2'} 
+        {id:5,nombre:'La loma',lat:4.604893,long:-74.065,precio:89,cupos:0,direccion:'Cr 28# 19-2'}
       ];
       var imageR = {
         url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',

@@ -39,7 +39,7 @@ Ionic pages and navigation.
     <ion-item>
       <ion-label>Seleciona vehículo</ion-label>
       <ion-select [formControl]="authForm.controls['vehiculo']">
-        <ion-option *ngFor="let vehiculo of usuario?.vehiculos" >{{vehiculo.tipo}} {{vehiculo.placa}}</ion-option>
+        <ion-option *ngFor="let vehiculo of usuario?.vehiculos" value="{{vehiculo.tipo}} {{vehiculo.placa}}">{{vehiculo.tipo}} {{vehiculo.placa}}</ion-option>
       </ion-select>
     </ion-item>
       <div class="error-box" *ngIf="authForm.controls['vehiculo'].hasError('required') && authForm.controls['vehiculo'].touched">* Seleccionar un vehículo!</div>
